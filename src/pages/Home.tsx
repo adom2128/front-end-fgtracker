@@ -19,8 +19,8 @@ function isOverSixMonthsAgo(date: Date) {
 const Home = ({ surveys }: HomeProps) => {
   const filteredSurveys = surveys.filter(
     (survey) =>
-      !survey.date_fg_completed ||
-      isOverSixMonthsAgo(new Date(survey.date_fg_completed))
+      !survey.dateFGCompleted ||
+      isOverSixMonthsAgo(new Date(survey.dateFGCompleted))
   );
 
   return (
@@ -34,8 +34,7 @@ const Home = ({ surveys }: HomeProps) => {
       </Row>
       <Row xs={1} sm={2} lg={3} xl={4} className="g-3">
         {filteredSurveys.map((survey) => (
-          <Col>
-            {' '}
+          <Col key={survey.id}>
             <CompanyCard company={survey.company} />
           </Col>
         ))}

@@ -8,7 +8,7 @@ interface SurveyListProps {
 const SurveyList = ({ surveys }: SurveyListProps) => {
   return (
     <>
-      <ul>company | topic | payment | notes | stage</ul>
+      <ul>company | topic | payment | notes | stage | date survey</ul>
       <ul>
         {surveys.map((survey) => (
           <Survey
@@ -18,13 +18,10 @@ const SurveyList = ({ surveys }: SurveyListProps) => {
             topic={survey.topic}
             payment={survey.payment}
             notes={survey.notes}
-            date_survey_completed={survey.date_survey_completed}
-            date_fg_completed={survey.date_fg_completed}
             stage={survey.stage}
-            payment_received={survey.payment_received}
-            payment_expiration_date={survey.payment_expiration_date}
-            payment_left={survey.payment_left}
+            dateSurveyCompleted={survey.dateSurveyCompleted}
           />
+          
         ))}
       </ul>
     </>

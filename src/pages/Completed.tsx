@@ -6,6 +6,7 @@ interface CompletedProps {
 }
 
 const Completed = ({ surveys }: CompletedProps) => {
+  
   return (
     <>
       <CompletedSurveyList surveys={surveys} />

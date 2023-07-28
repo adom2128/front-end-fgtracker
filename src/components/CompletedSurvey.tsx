@@ -7,15 +7,16 @@ const CompletedSurvey = ({
   payment,
   notes,
   stage,
-  payment_received,
-  payment_expiration_date,
-  payment_left,
-  date_survey_completed,
-  date_fg_completed
+  paymentReceived,
+  paymentExpirationDate,
+  paymentLeft,
+  dateSurveyCompleted,
+  dateFGCompleted
 }: SurveyData) => {
   return (
     <p>
-      {company} |{topic} |{payment} |{notes} ____ |{stage} | {payment_received} | {payment_expiration_date && payment_expiration_date.toString()} | {payment_left} | {date_survey_completed!.toString()} |{date_survey_completed!.toString()} | {date_fg_completed!.toString()}
+      {company} |{topic} |{payment} |{notes} ____ |{stage} | {paymentReceived} | {paymentExpirationDate && paymentExpirationDate.toString()} |
+       {paymentLeft} | {dateSurveyCompleted!.toString()} | {dateFGCompleted!.toString()}
     </p>
   );
 };

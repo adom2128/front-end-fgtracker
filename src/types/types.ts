@@ -1,13 +1,27 @@
 export interface SurveyData {
   id?: number;
   company: string;
-  topic: string;
-  payment: number;
+  dateFGCompleted?: string;
+  dateSurveyCompleted?: string;
   notes?: string;
+  payment?: number;
+  paymentExpirationDate?: string;
+  paymentLeft?: number;
+  paymentReceived?: boolean;
   stage?: string;
-  date_survey_completed?: Date;
-  date_fg_completed?: Date;
-  payment_received?: boolean;
-  payment_expiration_date?: Date;
-  payment_left?: number;
+  topic: string;
+}
+
+export interface ApiSurveyData {
+  company: string;
+  date_fg_completed: string;
+  date_survey_completed: string;
+  notes: string;
+  payment: number;
+  payment_expiration_date: string;
+  payment_left: number;
+  payment_received: boolean;
+  stage: string;
+  survey_id: number;
+  topic: string;
 }
