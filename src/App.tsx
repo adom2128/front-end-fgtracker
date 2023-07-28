@@ -2,16 +2,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getAllSurveys } from './api/Requests';
+import { getAllSurveys, postSurvey } from './api/Requests';
 import { SurveyData } from './types/types';
 import Dashboard from './pages/Dashboard';
 import Completed from './pages/Completed';
+import SurveyPage from './pages/SurveyPage';
 import Home from './pages/Home';
 import FourOhFour from './pages/404';
 import NavBar from './components/NavBar';
+import PlusButtonWithPopUp from './components/PlusButton';
+import AddSurveyPopUp from './components/AddSurveyPopUp';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
+  const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
 
   const fetchSurveys = async () => {
     const fetchedSurveys = await getAllSurveys();
@@ -21,6 +25,22 @@ function App() {
   useEffect(() => {
     fetchSurveys();
   }, []);
+
+  const handlePlusButtonClick = () => {
+    setShowAddSurveyPopup(true);
+  };
+
+  const handleAddSurveyPopupClose = () => {
+    setShowAddSurveyPopup(false);
+  };
+
+  const handleAddSurveyPopupSave = (newSurvey: SurveyData) => {
+    setShowAddSurveyPopup(false);
+
+    postSurvey(newSurvey).then((response) => {
+      setSurveysData((prev) => [...prev, response]);
+    });
+  };
 
   return (
     <Container className="my-4">
@@ -33,6 +53,13 @@ function App() {
         </Route>
         <Route element={<FourOhFour />} path="*" />
       </Routes>
+      <PlusButtonWithPopUp onClick={handlePlusButtonClick} />
+      {showAddSurveyPopup && (
+        <AddSurveyPopUp
+          onCancel={handleAddSurveyPopupClose}
+          onSaveClick={handleAddSurveyPopupSave}
+        />
+      )}
     </Container>
   );
 }

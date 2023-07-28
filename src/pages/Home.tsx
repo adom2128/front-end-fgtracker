@@ -1,4 +1,5 @@
 import { SurveyData } from '../types/types';
+import { Row, Col } from 'react-bootstrap';
 import CompanyCard from '../components/CompanyCard';
 
 interface HomeProps {
@@ -16,22 +17,30 @@ function isOverSixMonthsAgo(date: Date) {
 }
 
 const Home = ({ surveys }: HomeProps) => {
-
-  const filteredSurveys = surveys.filter((survey) =>
-    isOverSixMonthsAgo(new Date(survey.date_completed))
+  const filteredSurveys = surveys.filter(
+    (survey) =>
+      !survey.date_fg_completed ||
+      isOverSixMonthsAgo(new Date(survey.date_fg_completed))
   );
 
   return (
     <>
-    It's been 6 months since you participated in a focus group from one of these companies, apply now:
-    <ul>
-      {filteredSurveys.map((survey) => (
-        <CompanyCard
-          company={survey.company}
-        />
-      ))}
-    </ul>
-  </>
+      <Row>
+        <Col>
+          <h1></h1>
+          It's been 6 months since you participated in a focus group from one of
+          these companies, apply now:
+        </Col>
+      </Row>
+      <Row xs={1} sm={2} lg={3} xl={4} className="g-3">
+        {filteredSurveys.map((survey) => (
+          <Col>
+            {' '}
+            <CompanyCard company={survey.company} />
+          </Col>
+        ))}
+      </Row>
+    </>
   );
 };
 
