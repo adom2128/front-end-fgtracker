@@ -1,5 +1,4 @@
 import Survey from './Survey';
-// import { SurveyListProps } from '../types/types';
 import { SurveyData } from '../types/types';
 
 interface SurveyListProps {
@@ -9,6 +8,7 @@ interface SurveyListProps {
 const SurveyList = ({ surveys }: SurveyListProps) => {
   return (
     <>
+      <ul>company | topic | payment | notes | stage</ul>
       <ul>
         {surveys.map((survey) => (
           <Survey
@@ -17,6 +17,7 @@ const SurveyList = ({ surveys }: SurveyListProps) => {
             topic={survey.topic}
             payment={survey.payment}
             notes={survey.notes}
+            date_completed={survey.date_completed}
             stage={survey.stage}
             payment_received={survey.payment_received}
             payment_expiration_date={survey.payment_expiration_date}

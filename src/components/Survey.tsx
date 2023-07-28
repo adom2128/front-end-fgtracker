@@ -1,21 +1,10 @@
 import { SurveyData } from '../types/types';
 
-const Survey = ({
-  id,
-  company,
-  topic,
-  payment,
-  notes,
-  stage,
-  payment_received,
-  payment_expiration_date,
-  payment_left,
-}: SurveyData) => {
+const Survey = ({ id, company, topic, payment, notes, stage }: SurveyData) => {
   return (
-    <h1>
-      {' '}
-      survey {id}, company {company}
-    </h1>
+    <p>
+      {company} |{topic} |{payment} |{notes} ____ |{stage} |
+    </p>
   );
 };
 export default Survey;

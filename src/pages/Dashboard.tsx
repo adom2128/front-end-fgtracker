@@ -5,10 +5,10 @@ interface DashboardProps {
   surveys: SurveyData[];
 }
 
-const Dashboard = (props: DashboardProps) => {
+const Dashboard = ({ surveys }: DashboardProps) => {
   return (
     <>
-      <SurveyList surveys={props.surveys} />
+      <SurveyList surveys={surveys} />
     </>
   );
 };

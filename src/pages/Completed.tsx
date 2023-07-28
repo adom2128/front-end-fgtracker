@@ -1,10 +1,14 @@
-import { Outlet } from 'react-router-dom';
+import CompletedSurveyList from '../components/CompletedSurveyList';
+import { SurveyData } from '../types/types';
 
-const Completed = () => {
+interface CompletedProps {
+  surveys: SurveyData[];
+}
+
+const Completed = ({ surveys }: CompletedProps) => {
   return (
     <>
-      <p>Hello from Completed</p>
-      <Outlet />
+      <CompletedSurveyList surveys={surveys} />
     </>
   );
 };

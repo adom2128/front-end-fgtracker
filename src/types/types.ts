@@ -5,6 +5,7 @@ export interface SurveyData {
   payment: number;
   notes: string;
   stage: string;
+  date_completed: Date;
   payment_received: boolean;
   payment_expiration_date: Date;
   payment_left: number;
