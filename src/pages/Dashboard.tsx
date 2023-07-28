@@ -1,13 +1,14 @@
 import SurveyList from '../components/SurveyList';
-import { DashboardProps } from '../types/types';
+import { SurveyData } from '../types/types';
 
+interface DashboardProps {
+  surveys: SurveyData[];
+}
 
 const Dashboard = (props: DashboardProps) => {
-
   return (
     <>
-      <SurveyList
-        surveys={props.surveys} />
+      <SurveyList surveys={props.surveys} />
     </>
   );
 };
