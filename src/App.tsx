@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getAllSurveys, postSurvey } from './api/Requests';
-import { SurveyData } from './types/types';
+import { SurveyData, NewSurveyData } from './types/types';
 import Dashboard from './pages/Dashboard';
 import Completed from './pages/Completed';
 import SurveyPage from './pages/SurveyPage';
@@ -34,7 +34,7 @@ function App() {
     setShowAddSurveyPopup(false);
   };
 
-  const handleAddSurveyPopupSave = (newSurvey: SurveyData) => {
+  const handleAddSurveyPopupSave = (newSurvey: NewSurveyData) => {
     setShowAddSurveyPopup(false);
 
     postSurvey(newSurvey).then((response) => {
@@ -42,13 +42,17 @@ function App() {
     });
   };
 
+  const handleSurveyMenuButtonClick = () => {
+    console.log('survey menu button clicked');
+  };
+
   return (
     <Container className="my-4">
       <NavBar />
       <Routes>
         <Route element={<Home surveys={surveysData} />} path="/" />
-        <Route element={<Dashboard surveys={surveysData} />} path="dashboard" />
-        <Route element={<Completed surveys={surveysData} />} path="completed">
+        <Route element={<Dashboard surveys={surveysData} onSurveyMenuButtonClick={handleSurveyMenuButtonClick}/>} path="dashboard" />
+        <Route element={<Completed surveys={surveysData} onSurveyMenuButtonClick={handleSurveyMenuButtonClick}/>} path="completed">
           {/* <Route element={<SurveyPage />} path=":completed_survey_id" /> */}
         </Route>
         <Route element={<FourOhFour />} path="*" />

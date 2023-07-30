@@ -1,5 +1,5 @@
 export interface SurveyData {
-  id?: number;
+  id: number;
   company: string;
   dateFGCompleted?: string;
   dateSurveyCompleted?: string;
@@ -25,3 +25,10 @@ export interface ApiSurveyData {
   survey_id: number;
   topic: string;
 }
+
+export interface NewSurveyData {
+  company: string,
+  topic: string,
+  payment: number,
+  notes: string,
+};

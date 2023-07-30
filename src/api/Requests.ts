@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SurveyData, ApiSurveyData } from '../types/types';
+import { SurveyData, ApiSurveyData, NewSurveyData } from '../types/types';
 
 export const getAllSurveys = async () => {
   try {
@@ -12,7 +12,7 @@ export const getAllSurveys = async () => {
   }
 };
 
-export const postSurvey = async (newSurvey: SurveyData) => {
+export const postSurvey = async (newSurvey: NewSurveyData) => {
   try {
     const response = await axios.post(
       'https://back-end-fgtracker.onrender.com/surveys',

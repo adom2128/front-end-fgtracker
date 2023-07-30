@@ -3,12 +3,13 @@ import { SurveyData } from '../types/types';
 
 interface DashboardProps {
   surveys: SurveyData[];
+  onSurveyMenuButtonClick: () => void;
 }
 
-const Dashboard = ({ surveys }: DashboardProps) => {
+const Dashboard = ({ surveys, onSurveyMenuButtonClick }: DashboardProps) => {
   return (
     <>
-      <SurveyList surveys={surveys} />
+      <SurveyList surveys={surveys} onSurveyMenuButtonClick={onSurveyMenuButtonClick}/>
     </>
   );
 };
