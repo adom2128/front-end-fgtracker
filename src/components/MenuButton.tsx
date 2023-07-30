@@ -5,20 +5,21 @@ import './MenuButton.css';
 
 interface MenuButtonProps {
   surveyID: number;
-  onSurveyMenuButtonClick: () => void;
+  onEditSurveyClick: (surveyID: number) => void;
+  onDeleteSurveyClick: (surveyID: number) => void;
 }
 
-const MenuButton = ({ onSurveyMenuButtonClick, surveyID }: MenuButtonProps) => {
+const MenuButton = ({ onEditSurveyClick, onDeleteSurveyClick, surveyID }: MenuButtonProps) => {
   return (
     <>
     <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle variant="success" id="dropdown-basic-${surveyID}" className="dropdown-btn">
       <FontAwesomeIcon icon={faEllipsisVertical} />
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Edit</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Delete</Dropdown.Item>
+        <Dropdown.Item onClick={() => onEditSurveyClick(surveyID)}>Edit</Dropdown.Item>
+        <Dropdown.Item onClick={() => onDeleteSurveyClick(surveyID)}>Delete</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
     </>

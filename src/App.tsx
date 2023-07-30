@@ -2,8 +2,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getAllSurveys, postSurvey } from './api/Requests';
-import { SurveyData, NewSurveyData } from './types/types';
+import {
+  getAllSurveys,
+  postSurvey,
+  deleteSurvey,
+  updateSurvey,
+} from './api/Requests';
+import { SurveyData } from './types/types';
 import Dashboard from './pages/Dashboard';
 import Completed from './pages/Completed';
 import SurveyPage from './pages/SurveyPage';
@@ -12,10 +17,13 @@ import FourOhFour from './pages/404';
 import NavBar from './components/NavBar';
 import PlusButtonWithPopUp from './components/PlusButton';
 import AddSurveyPopUp from './components/AddSurveyPopUp';
+import EditSurvey from './components/EditSurvey';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
   const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
+  const [showEditSurveyPopup, setShowEditSurveyPopup] = useState(false);
+  const [selectedSurveyID, setSelectedSurveyID] = useState<number | null>(null);
 
   const fetchSurveys = async () => {
     const fetchedSurveys = await getAllSurveys();
@@ -34,7 +42,7 @@ function App() {
     setShowAddSurveyPopup(false);
   };
 
-  const handleAddSurveyPopupSave = (newSurvey: NewSurveyData) => {
+  const handleAddSurveyPopupSave = (newSurvey: Partial<SurveyData>) => {
     setShowAddSurveyPopup(false);
 
     postSurvey(newSurvey).then((response) => {
@@ -42,8 +50,30 @@ function App() {
     });
   };
 
-  const handleSurveyMenuButtonClick = () => {
-    console.log('survey menu button clicked');
+  const handleEditSurveyClick = (surveyID: number) => {
+    setShowEditSurveyPopup(true);
+    setSelectedSurveyID(surveyID);
+    console.log('edit survey menu item clicked');
+  };
+
+  const handleDeleteSurveyClick = (surveyID: number) => {
+    deleteSurvey(surveyID).then(() => {
+      fetchSurveys();
+    });
+  };
+
+  const handleEditSurveyPopupSave = (
+    updatedSurvey: SurveyData,
+    surveyID: number
+  ) => {
+    setShowEditSurveyPopup(false);
+    updateSurvey(updatedSurvey, surveyID).then(() => {
+      fetchSurveys();
+    });
+  };
+
+  const handleEditSurveyPopupClose = () => {
+    setShowEditSurveyPopup(false);
   };
 
   return (
@@ -51,8 +81,26 @@ function App() {
       <NavBar />
       <Routes>
         <Route element={<Home surveys={surveysData} />} path="/" />
-        <Route element={<Dashboard surveys={surveysData} onSurveyMenuButtonClick={handleSurveyMenuButtonClick}/>} path="dashboard" />
-        <Route element={<Completed surveys={surveysData} onSurveyMenuButtonClick={handleSurveyMenuButtonClick}/>} path="completed">
+        <Route
+          element={
+            <Dashboard
+              surveys={surveysData}
+              onDeleteSurveyClick={handleDeleteSurveyClick}
+              onEditSurveyClick={handleEditSurveyClick}
+            />
+          }
+          path="dashboard"
+        />
+        <Route
+          element={
+            <Completed
+              surveys={surveysData}
+              onDeleteSurveyClick={handleDeleteSurveyClick}
+              onEditSurveyClick={handleEditSurveyClick}
+            />
+          }
+          path="completed"
+        >
           {/* <Route element={<SurveyPage />} path=":completed_survey_id" /> */}
         </Route>
         <Route element={<FourOhFour />} path="*" />
@@ -62,6 +110,15 @@ function App() {
         <AddSurveyPopUp
           onCancel={handleAddSurveyPopupClose}
           onSaveClick={handleAddSurveyPopupSave}
+        />
+      )}
+      {showEditSurveyPopup && selectedSurveyID !== null && (
+        <EditSurvey
+          selectedSurveyData={
+            surveysData.find((survey) => survey.id === selectedSurveyID)!
+          }
+          onCancel={handleEditSurveyPopupClose}
+          onSaveClick={handleEditSurveyPopupSave}
         />
       )}
     </Container>

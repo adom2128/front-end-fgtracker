@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SurveyData, ApiSurveyData, NewSurveyData } from '../types/types';
+import { SurveyData, ApiSurveyData } from '../types/types';
 
 export const getAllSurveys = async () => {
   try {
@@ -12,7 +12,7 @@ export const getAllSurveys = async () => {
   }
 };
 
-export const postSurvey = async (newSurvey: NewSurveyData) => {
+export const postSurvey = async (newSurvey: Partial<SurveyData>) => {
   try {
     const response = await axios.post(
       'https://back-end-fgtracker.onrender.com/surveys',
@@ -24,15 +24,32 @@ export const postSurvey = async (newSurvey: NewSurveyData) => {
   }
 };
 
-// const extractDate = (dateString: string) => {
-//   const dateObject = new Date(dateString);
-//     return dateObject.toISOString().slice(0, 10);
-// }
+export const updateSurvey = async (
+  updatedSurvey: SurveyData,
+  surveyID: number
+) => {
+  try {
+    console.log(updatedSurvey)
+    const response = await axios.put(
+      `https://back-end-fgtracker.onrender.com/surveys/${surveyID}`,
+      updatedSurvey
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-// const convertFromApi = (apiSurvey: apiSurveyData) => {
-//   const { company, date_fg_completed: dateFGCompleted, date_survey_completed: dateSurveyCompleted, notes, payment, payment_expiration_date: paymentExpirationDate, payment_left: paymentLeft, payment_received: paymentReceived, stage, survey_id: id, topic } = apiSurvey;
-//   return {company, dateFGCompleted, dateSurveyCompleted, notes, payment, paymentExpirationDate, paymentLeft, paymentReceived, stage, id, topic};
-// }
+export const deleteSurvey = async (surveyID: number) => {
+  try {
+    const response = await axios.delete(
+      `https://back-end-fgtracker.onrender.com/surveys/${surveyID}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
   const {

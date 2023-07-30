@@ -6,10 +6,11 @@ import { Table } from 'react-bootstrap';
 
 interface SurveyListProps {
   surveys: SurveyData[];
-  onSurveyMenuButtonClick: () => void;
+  onEditSurveyClick: (surveyID: number) => void;
+  onDeleteSurveyClick: (surveyID: number) => void;
 }
 
-const SurveyList = ({ surveys, onSurveyMenuButtonClick }: SurveyListProps) => {
+const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: SurveyListProps) => {
   return (
     <>
       <div className="table-responsive">
@@ -37,7 +38,8 @@ const SurveyList = ({ surveys, onSurveyMenuButtonClick }: SurveyListProps) => {
                 <td>
                   <MenuButton
                     surveyID={survey.id}
-                    onSurveyMenuButtonClick={onSurveyMenuButtonClick}
+                    onDeleteSurveyClick={onDeleteSurveyClick}
+                    onEditSurveyClick={onEditSurveyClick}
                   />
                 </td>
               </tr>

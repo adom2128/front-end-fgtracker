@@ -5,12 +5,13 @@ import { Table } from 'react-bootstrap';
 
 interface CompletedSurveyListProps {
   surveys: SurveyData[];
-  onSurveyMenuButtonClick: () => void;
+  onEditSurveyClick: (surveyID: number) => void;
+  onDeleteSurveyClick: (surveyID: number) => void;
 }
 
 const CompletedSurveyList = ({
   surveys,
-  onSurveyMenuButtonClick,
+  onDeleteSurveyClick, onEditSurveyClick
 }: CompletedSurveyListProps) => {
   return (
     <>
@@ -45,7 +46,8 @@ const CompletedSurveyList = ({
                   <td>
                     <MenuButton
                       surveyID={survey.id}
-                      onSurveyMenuButtonClick={onSurveyMenuButtonClick}
+                      onDeleteSurveyClick={onDeleteSurveyClick}
+                      onEditSurveyClick={onEditSurveyClick}
                     />
                   </td>
                 </tr>

@@ -1,10 +1,10 @@
 import { useRef, FormEvent } from 'react';
 import { Form, Row, Col, Stack, Button } from 'react-bootstrap';
-import { NewSurveyData } from '../types/types';
+import { SurveyData } from '../types/types';
 
 interface AddSurveyPopUpProps {
   onCancel: () => void;
-  onSaveClick: (data: NewSurveyData) => void;
+  onSaveClick: (data: Partial<SurveyData>) => void;
 }
 
 const AddSurveyPopUp = ({ onCancel, onSaveClick }: AddSurveyPopUpProps) => {

@@ -3,13 +3,18 @@ import { SurveyData } from '../types/types';
 
 interface DashboardProps {
   surveys: SurveyData[];
-  onSurveyMenuButtonClick: () => void;
+  onEditSurveyClick: (surveyID: number) => void;
+  onDeleteSurveyClick: (surveyID: number) => void;
 }
 
-const Dashboard = ({ surveys, onSurveyMenuButtonClick }: DashboardProps) => {
+const Dashboard = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: DashboardProps) => {
   return (
     <>
-      <SurveyList surveys={surveys} onSurveyMenuButtonClick={onSurveyMenuButtonClick}/>
+      <SurveyList
+        surveys={surveys}
+        onDeleteSurveyClick={onDeleteSurveyClick}
+        onEditSurveyClick={onEditSurveyClick}
+      />
     </>
   );
 };

@@ -3,14 +3,18 @@ import { SurveyData } from '../types/types';
 
 interface CompletedProps {
   surveys: SurveyData[];
-  onSurveyMenuButtonClick: () => void;
+  onEditSurveyClick: (surveyID: number) => void;
+  onDeleteSurveyClick: (surveyID: number) => void;
 }
 
-const Completed = ({ surveys, onSurveyMenuButtonClick }: CompletedProps) => {
-  
+const Completed = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: CompletedProps) => {
   return (
     <div className="table-container">
-      <CompletedSurveyList surveys={surveys} onSurveyMenuButtonClick={onSurveyMenuButtonClick} />
+      <CompletedSurveyList
+        surveys={surveys}
+        onDeleteSurveyClick={onDeleteSurveyClick}
+        onEditSurveyClick={onEditSurveyClick}
+      />
     </div>
   );
 };
