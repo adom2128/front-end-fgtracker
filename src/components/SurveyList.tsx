@@ -11,6 +11,7 @@ interface SurveyListProps {
 }
 
 const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: SurveyListProps) => {
+
   return (
     <>
       <div className="table-responsive">

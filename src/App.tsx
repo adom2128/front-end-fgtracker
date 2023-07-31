@@ -18,12 +18,14 @@ import NavBar from './components/NavBar';
 import PlusButtonWithPopUp from './components/PlusButton';
 import AddSurveyPopUp from './components/AddSurveyPopUp';
 import EditSurvey from './components/EditSurvey';
+import DeleteModal from './components/DeleteModal';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
   const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
   const [showEditSurveyPopup, setShowEditSurveyPopup] = useState(false);
   const [selectedSurveyID, setSelectedSurveyID] = useState<number | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const fetchSurveys = async () => {
     const fetchedSurveys = await getAllSurveys();
@@ -53,13 +55,25 @@ function App() {
   const handleEditSurveyClick = (surveyID: number) => {
     setShowEditSurveyPopup(true);
     setSelectedSurveyID(surveyID);
-    console.log('edit survey menu item clicked');
+  };
+
+  const hideDeleteModal = () => {
+    setShowDeleteModal(false);
+    setSelectedSurveyID(null);
   };
 
   const handleDeleteSurveyClick = (surveyID: number) => {
-    deleteSurvey(surveyID).then(() => {
-      fetchSurveys();
-    });
+    setSelectedSurveyID(surveyID);
+    setShowDeleteModal(true);
+  };
+
+  const handleConfirmDeleteSurvey = () => {
+    if (selectedSurveyID !== null) {
+      deleteSurvey(selectedSurveyID).then(() => {
+        fetchSurveys();
+      });
+    }
+    setShowDeleteModal(false);
   };
 
   const handleEditSurveyPopupSave = (
@@ -70,10 +84,12 @@ function App() {
     updateSurvey(updatedSurvey, surveyID).then(() => {
       fetchSurveys();
     });
+    setSelectedSurveyID(null);
   };
 
   const handleEditSurveyPopupClose = () => {
     setShowEditSurveyPopup(false);
+    setSelectedSurveyID(null);
   };
 
   return (
@@ -121,6 +137,11 @@ function App() {
           onSaveClick={handleEditSurveyPopupSave}
         />
       )}
+      <DeleteModal
+        show={showDeleteModal}
+        onHide={hideDeleteModal}
+        onConfirmDelete={handleConfirmDeleteSurvey}
+      />
     </Container>
   );
 }
