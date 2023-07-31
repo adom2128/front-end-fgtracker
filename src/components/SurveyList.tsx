@@ -3,6 +3,7 @@ import Survey from './Survey';
 import { SurveyData } from '../types/types';
 import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';
+import './SurveyList.css'
 
 interface SurveyListProps {
   surveys: SurveyData[];
@@ -14,7 +15,7 @@ const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: SurveyL
 
   return (
     <>
-      <div className="table-responsive">
+      <div className="table-responsive survey-table">
         <Table hover>
           <thead>
             <tr>

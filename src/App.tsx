@@ -128,11 +128,12 @@ function App() {
           onSaveClick={handleAddSurveyPopupSave}
         />
       )}
-      {showEditSurveyPopup && selectedSurveyID !== null && (
+      {selectedSurveyID !== null && (
         <EditSurvey
           selectedSurveyData={
             surveysData.find((survey) => survey.id === selectedSurveyID)!
           }
+          show={showEditSurveyPopup}
           onCancel={handleEditSurveyPopupClose}
           onSaveClick={handleEditSurveyPopupSave}
         />

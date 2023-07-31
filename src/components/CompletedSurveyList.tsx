@@ -2,6 +2,7 @@ import CompletedSurvey from './CompletedSurvey';
 import { SurveyData } from '../types/types';
 import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';
+import './CompletedSurveyList.css';
 
 interface CompletedSurveyListProps {
   surveys: SurveyData[];
@@ -11,11 +12,12 @@ interface CompletedSurveyListProps {
 
 const CompletedSurveyList = ({
   surveys,
-  onDeleteSurveyClick, onEditSurveyClick
+  onDeleteSurveyClick,
+  onEditSurveyClick,
 }: CompletedSurveyListProps) => {
   return (
     <>
-      <div className="table-responsive">
+      <div className="table-responsive survey-table">
         <Table hover>
           <thead>
             <tr>

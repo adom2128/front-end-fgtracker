@@ -1,8 +1,9 @@
 import { useRef, FormEvent, useState } from 'react';
-import { Form, Row, Col, Stack, Button } from 'react-bootstrap';
+import { Form, Row, Col, Stack, Button, Modal } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
 
 interface EditSurveyPopUpProps {
+  show: boolean;
   onCancel: () => void;
   onSaveClick: (updatedSurvey: SurveyData, surveyID: number) => void;
   selectedSurveyData: SurveyData;
@@ -17,6 +18,7 @@ const day = String(today.getDate()).padStart(2, '0');
 const todayDate = `${year}-${month}-${day}`;
 
 const EditSurvey = ({
+  show,
   onCancel,
   onSaveClick,
   selectedSurveyData,
@@ -70,160 +72,140 @@ const EditSurvey = ({
   };
 
   return (
-    <div
-      className="modal show"
-      style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
-    >
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Edit</h5>
-            <button type="button" className="close" onClick={onCancel}>
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <Form onSubmit={handleSave}>
-              <Stack gap={4}>
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Company</Form.Label>
-                      <Form.Control
-                        ref={companyRef}
-                        required
-                        defaultValue={selectedSurveyData.company}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Topic</Form.Label>
-                      <Form.Control
-                        ref={topicRef}
-                        required
-                        defaultValue={selectedSurveyData.topic}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Date Survey Completed</Form.Label>
-                      <Form.Control
-                        ref={dateSurveyCompletedRef}
-                        required
-                        defaultValue={selectedSurveyData.dateSurveyCompleted}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Payment</Form.Label>
-                      <Form.Control
-                        ref={paymentRef}
-                        defaultValue={selectedSurveyData.payment}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Date Focus Group Completed</Form.Label>
-                      <Form.Control
-                        ref={dateFGCompletedRef}
-                        required
-                        defaultValue={selectedSurveyData.dateFGCompleted}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Payment Received</Form.Label>
-                      <Form.Check
-                        type="checkbox"
-                        ref={paymentReceivedRef}
-                        checked={paymentReceivedValue}
-                        onChange={handlePaymentReceivedChange}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Payment Left</Form.Label>
-                      <Form.Control
-                        ref={paymentLeftRef}
-                        required
-                        defaultValue={selectedSurveyData.paymentLeft}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group>
-                      <Form.Label>Payment Expiration Date</Form.Label>
-                      <Form.Control
-                        ref={paymentExpirationRef}
-                        defaultValue={selectedSurveyData.paymentExpirationDate}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
+    <Modal show={show} onHide={onCancel} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>Edit</Modal.Title>
+      </Modal.Header>
+      <Form onSubmit={handleSave}>
+        <Modal.Body>
+          <Stack gap={4}>
+            <Row>
+              <Col>
                 <Form.Group>
-                  <Form.Label>Stage</Form.Label>
-                  <Form.Select
-                    value={selectedStageValue}
-                    ref={stageRef}
-                    onChange={handleStageChange}
-                  >
-                    <option value={selectedStageValue}>
-                      {selectedStageValue}
-                    </option>
-                    {stageOptions.map((option) =>
-                      option !== selectedSurveyData.stage ? (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ) : null
-                    )}
-                  </Form.Select>
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Notes</Form.Label>
+                  <Form.Label>Company</Form.Label>
                   <Form.Control
-                    ref={notesRef}
-                    as="textarea"
-                    rows={2}
-                    defaultValue={selectedSurveyData.notes}
+                    ref={companyRef}
+                    required
+                    defaultValue={selectedSurveyData.company}
                   />
                 </Form.Group>
-              </Stack>
-              <Stack
-                direction="horizontal"
-                gap={2}
-                className="justify-content-end mt-2 col-md-12"
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Topic</Form.Label>
+                  <Form.Control
+                    ref={topicRef}
+                    required
+                    defaultValue={selectedSurveyData.topic}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Date Survey Completed</Form.Label>
+                  <Form.Control
+                    ref={dateSurveyCompletedRef}
+                    required
+                    defaultValue={selectedSurveyData.dateSurveyCompleted}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Payment</Form.Label>
+                  <Form.Control
+                    ref={paymentRef}
+                    defaultValue={selectedSurveyData.payment}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Date Focus Group Completed</Form.Label>
+                  <Form.Control
+                    ref={dateFGCompletedRef}
+                    required
+                    defaultValue={selectedSurveyData.dateFGCompleted}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Payment Received</Form.Label>
+                  <Form.Check
+                    type="checkbox"
+                    ref={paymentReceivedRef}
+                    checked={paymentReceivedValue}
+                    onChange={handlePaymentReceivedChange}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Payment Left</Form.Label>
+                  <Form.Control
+                    ref={paymentLeftRef}
+                    required
+                    defaultValue={selectedSurveyData.paymentLeft}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Payment Expiration Date</Form.Label>
+                  <Form.Control
+                    ref={paymentExpirationRef}
+                    defaultValue={selectedSurveyData.paymentExpirationDate}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Form.Group>
+              <Form.Label>Stage</Form.Label>
+              <Form.Select
+                value={selectedStageValue}
+                ref={stageRef}
+                onChange={handleStageChange}
               >
-                <Button type="submit" variant="primary">
-                  Save
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline-secondary"
-                  onClick={onCancel}
-                >
-                  Cancel
-                </Button>
-              </Stack>
-            </Form>
-          </div>
-        </div>
-      </div>
-    </div>
+                <option value={selectedStageValue}>{selectedStageValue}</option>
+                {stageOptions.map((option) =>
+                  option !== selectedSurveyData.stage ? (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ) : null
+                )}
+              </Form.Select>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Notes</Form.Label>
+              <Form.Control
+                ref={notesRef}
+                as="textarea"
+                rows={2}
+                defaultValue={selectedSurveyData.notes}
+              />
+            </Form.Group>
+          </Stack>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button type="submit" variant="primary">
+            Save
+          </Button>
+          <Button type="button" variant="outline-secondary" onClick={onCancel}>
+            Cancel
+          </Button>
+        </Modal.Footer>
+      </Form>
+    </Modal>
   );
 };
 
