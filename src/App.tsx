@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -24,14 +25,18 @@ function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
   const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
   const [showEditSurveyPopup, setShowEditSurveyPopup] = useState(false);
-  const [selectedSurveyToEditID, setSelectedSurveyToEditID] = useState<number | null>(null);
-  const [selectedSurveyToDeleteID, setSelectedSurveyToDeleteID] = useState<number | null>(null);
+  const [selectedSurveyToEditID, setSelectedSurveyToEditID] = useState<
+    number | null
+  >(null);
+  const [selectedSurveyToDeleteID, setSelectedSurveyToDeleteID] = useState<
+    number | null
+  >(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const fetchSurveys = () => {
     getAllSurveys().then((response) => {
-      setSurveysData(response)
-    })
+      setSurveysData(response);
+    });
   };
 
   useEffect(() => {

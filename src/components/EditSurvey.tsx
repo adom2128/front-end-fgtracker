@@ -1,6 +1,8 @@
 import { useRef, FormEvent, useState } from 'react';
 import { Form, Row, Col, Stack, Button, Modal } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
+import DatePicker from 'react-datepicker';
+import { formatDate } from '../helpers';
 
 interface EditSurveyPopUpProps {
   show: boolean;
@@ -24,16 +26,35 @@ const EditSurvey = ({
     selectedSurveyData.paymentReceived
   );
 
+  const initialDateSurveyCompleted = selectedSurveyData.dateSurveyCompleted
+    ? new Date(selectedSurveyData.dateSurveyCompleted)
+    : null;
+
+  const initialDateFGCompleted = selectedSurveyData.dateFGCompleted
+    ? new Date(selectedSurveyData.dateFGCompleted)
+    : null;
+
+  const initialPaymentExpirationDate = selectedSurveyData.paymentExpirationDate
+    ? new Date(selectedSurveyData.paymentExpirationDate)
+    : null;
+
+  const [dateSurveyCompleted, setDateSurveyCompleted] = useState<Date | null>(
+    initialDateSurveyCompleted
+  );
+
+  const [dateFGCompleted, setDateFGCompleted] = useState<Date | null>(
+    initialDateFGCompleted
+  );
+
+  const [paymentExpirationDate, setPaymentExpirationDate] =
+    useState<Date | null>(initialPaymentExpirationDate);
+
   const companyRef = useRef<HTMLInputElement>(null);
   const topicRef = useRef<HTMLInputElement>(null);
   const paymentRef = useRef<HTMLInputElement>(null);
   const notesRef = useRef<HTMLTextAreaElement>(null);
-  const dateSurveyCompletedRef = useRef<HTMLInputElement>(null);
-  const dateFGCompletedRef = useRef<HTMLInputElement>(null);
   const paymentReceivedRef = useRef<HTMLInputElement>(null);
   const paymentLeftRef = useRef<HTMLInputElement>(null);
-  const paymentExpirationRef = useRef<HTMLInputElement>(null);
-  // const stageRef = useRef<HTMLSelectElement>(null);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -44,11 +65,15 @@ const EditSurvey = ({
       topic: topicRef.current!.value,
       payment: Number(paymentRef.current!.value),
       notes: notesRef.current!.value,
-      date_survey_completed: dateSurveyCompletedRef.current!.value,
-      date_fg_completed: dateFGCompletedRef.current?.value || undefined,
+      date_survey_completed: dateSurveyCompleted
+        ? formatDate(dateSurveyCompleted)
+        : null,
+      date_fg_completed: dateFGCompleted ? formatDate(dateFGCompleted) : null,
       payment_received: paymentReceivedRef.current?.checked || false,
       payment_left: Number(paymentLeftRef.current!.value),
-      payment_expiration_date: paymentExpirationRef.current?.value || null,
+      payment_expiration_date: paymentExpirationDate
+        ? formatDate(paymentExpirationDate)
+        : null,
       stage: selectedStageValue,
     };
     onSaveClick(updatedSurvey, selectedSurveyData.id);
@@ -99,11 +124,11 @@ const EditSurvey = ({
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Date Survey Completed</Form.Label>
-                    <Form.Control
-                      ref={dateSurveyCompletedRef}
-                      required
-                      defaultValue={selectedSurveyData.dateSurveyCompleted}
+                    <Form.Label>Date Survey Submitted</Form.Label>
+                    <DatePicker
+                      selected={dateSurveyCompleted}
+                      onChange={(date) => setDateSurveyCompleted(date)}
+                      dateFormat="MMMM d, yyyy"
                     />
                   </Form.Group>
                 </Col>
@@ -122,9 +147,10 @@ const EditSurvey = ({
                 <Col>
                   <Form.Group>
                     <Form.Label>Date Focus Group Completed</Form.Label>
-                    <Form.Control
-                      ref={dateFGCompletedRef}
-                      defaultValue={selectedSurveyData.dateFGCompleted}
+                    <DatePicker
+                      selected={dateFGCompleted}
+                      onChange={(date) => setDateFGCompleted(date)}
+                      dateFormat="MMMM d, yyyy"
                     />
                   </Form.Group>
                 </Col>
@@ -153,9 +179,10 @@ const EditSurvey = ({
                 <Col>
                   <Form.Group>
                     <Form.Label>Payment Expiration Date</Form.Label>
-                    <Form.Control
-                      ref={paymentExpirationRef}
-                      defaultValue={selectedSurveyData.paymentExpirationDate}
+                    <DatePicker
+                      selected={paymentExpirationDate}
+                      onChange={(date) => setPaymentExpirationDate(date)}
+                      dateFormat="MMMM d, yyyy"
                     />
                   </Form.Group>
                 </Col>
@@ -164,7 +191,6 @@ const EditSurvey = ({
                 <Form.Label>Stage</Form.Label>
                 <Form.Select
                   value={selectedStageValue}
-                  // ref={stageRef}
                   onChange={handleStageChange}
                 >
                   <option value={selectedStageValue}>

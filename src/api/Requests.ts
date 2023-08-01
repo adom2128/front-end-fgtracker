@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { format } from 'date-fns';
-import { SurveyData, ApiSurveyData } from '../types/types';
+import { SurveyData } from '../types/types';
+import { convertFromApi } from '../helpers';
 
 export const getAllSurveys = async () => {
   try {
@@ -52,48 +52,3 @@ export const deleteSurvey = async (surveyID: number) => {
   }
 };
 
-const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
-  const {
-    company,
-    date_fg_completed,
-    date_survey_completed,
-    notes,
-    payment,
-    payment_expiration_date,
-    payment_left,
-    payment_received,
-    stage,
-    survey_id,
-    topic,
-  } = apiSurvey;
-
-  // const extractDate = (dateString: string): string => {
-  //   const dateObject = new Date(dateString);
-  //   return dateObject.toISOString().slice(0, 10);
-  // };
-
-  const extractLongDateFormat = (dateString: string): string => {
-    if (!dateString) {
-      return '';
-    }
-
-    const dateObject = new Date(dateString);
-    const longDateFormat = format(dateObject, 'MMMM d, yyyy');
-
-    return longDateFormat;
-  };
-
-  return {
-    company,
-    dateFGCompleted: extractLongDateFormat(date_fg_completed),
-    dateSurveyCompleted: extractLongDateFormat(date_survey_completed),
-    notes,
-    payment,
-    paymentExpirationDate: extractLongDateFormat(payment_expiration_date),
-    paymentLeft: payment_left,
-    paymentReceived: payment_received,
-    stage,
-    id: survey_id,
-    topic,
-  };
-};
