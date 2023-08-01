@@ -8,7 +8,7 @@ export interface SurveyData {
   paymentExpirationDate?: string;
   paymentLeft?: number;
   paymentReceived?: boolean;
-  stage?: string;
+  stage: string;
   topic: string;
 }
 

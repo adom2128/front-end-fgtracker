@@ -5,7 +5,6 @@ interface DeleteModalProps {
   onHide: () => void;
   onConfirmDelete: () => void;
 }
-
 const DeleteModal = ({ show, onHide, onConfirmDelete }: DeleteModalProps) => {
   return (
     <Modal show={show} onHide={onHide} centered>

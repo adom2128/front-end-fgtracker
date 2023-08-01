@@ -15,7 +15,7 @@ import SurveyPage from './pages/SurveyPage';
 import Home from './pages/Home';
 import FourOhFour from './pages/404';
 import NavBar from './components/NavBar';
-import PlusButtonWithPopUp from './components/PlusButton';
+import PlusButton from './components/PlusButton';
 import AddSurveyPopUp from './components/AddSurveyPopUp';
 import EditSurvey from './components/EditSurvey';
 import DeleteModal from './components/DeleteModal';
@@ -24,12 +24,14 @@ function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
   const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
   const [showEditSurveyPopup, setShowEditSurveyPopup] = useState(false);
-  const [selectedSurveyID, setSelectedSurveyID] = useState<number | null>(null);
+  const [selectedSurveyToEditID, setSelectedSurveyToEditID] = useState<number | null>(null);
+  const [selectedSurveyToDeleteID, setSelectedSurveyToDeleteID] = useState<number | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const fetchSurveys = async () => {
-    const fetchedSurveys = await getAllSurveys();
-    setSurveysData(fetchedSurveys);
+  const fetchSurveys = () => {
+    getAllSurveys().then((response) => {
+      setSurveysData(response)
+    })
   };
 
   useEffect(() => {
@@ -54,22 +56,21 @@ function App() {
 
   const handleEditSurveyClick = (surveyID: number) => {
     setShowEditSurveyPopup(true);
-    setSelectedSurveyID(surveyID);
+    setSelectedSurveyToEditID(surveyID);
   };
 
   const hideDeleteModal = () => {
     setShowDeleteModal(false);
-    setSelectedSurveyID(null);
   };
 
   const handleDeleteSurveyClick = (surveyID: number) => {
-    setSelectedSurveyID(surveyID);
+    setSelectedSurveyToDeleteID(surveyID);
     setShowDeleteModal(true);
   };
 
   const handleConfirmDeleteSurvey = () => {
-    if (selectedSurveyID !== null) {
-      deleteSurvey(selectedSurveyID).then(() => {
+    if (selectedSurveyToDeleteID !== null) {
+      deleteSurvey(selectedSurveyToDeleteID).then(() => {
         fetchSurveys();
       });
     }
@@ -84,12 +85,12 @@ function App() {
     updateSurvey(updatedSurvey, surveyID).then(() => {
       fetchSurveys();
     });
-    setSelectedSurveyID(null);
+    setSelectedSurveyToEditID(null);
   };
 
   const handleEditSurveyPopupClose = () => {
     setShowEditSurveyPopup(false);
-    setSelectedSurveyID(null);
+    setSelectedSurveyToEditID(null);
   };
 
   return (
@@ -121,17 +122,18 @@ function App() {
         </Route>
         <Route element={<FourOhFour />} path="*" />
       </Routes>
-      <PlusButtonWithPopUp onClick={handlePlusButtonClick} />
-      {showAddSurveyPopup && (
-        <AddSurveyPopUp
-          onCancel={handleAddSurveyPopupClose}
-          onSaveClick={handleAddSurveyPopupSave}
-        />
-      )}
-      {selectedSurveyID !== null && (
+      <PlusButton onClick={handlePlusButtonClick} />
+
+      <AddSurveyPopUp
+        show={showAddSurveyPopup}
+        onCancel={handleAddSurveyPopupClose}
+        onSaveClick={handleAddSurveyPopupSave}
+      />
+
+      {selectedSurveyToEditID !== null && (
         <EditSurvey
           selectedSurveyData={
-            surveysData.find((survey) => survey.id === selectedSurveyID)!
+            surveysData.find((survey) => survey.id === selectedSurveyToEditID)!
           }
           show={showEditSurveyPopup}
           onCancel={handleEditSurveyPopupClose}

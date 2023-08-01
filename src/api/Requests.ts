@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { format } from 'date-fns';
 import { SurveyData, ApiSurveyData } from '../types/types';
 
 export const getAllSurveys = async () => {
@@ -29,7 +30,7 @@ export const updateSurvey = async (
   surveyID: number
 ) => {
   try {
-    console.log(updatedSurvey)
+    console.log(updatedSurvey);
     const response = await axios.put(
       `https://back-end-fgtracker.onrender.com/surveys/${surveyID}`,
       updatedSurvey
@@ -66,18 +67,29 @@ const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
     topic,
   } = apiSurvey;
 
-  const extractDate = (dateString: string): string => {
+  // const extractDate = (dateString: string): string => {
+  //   const dateObject = new Date(dateString);
+  //   return dateObject.toISOString().slice(0, 10);
+  // };
+
+  const extractLongDateFormat = (dateString: string): string => {
+    if (!dateString) {
+      return '';
+    }
+
     const dateObject = new Date(dateString);
-    return dateObject.toISOString().slice(0, 10);
+    const longDateFormat = format(dateObject, 'MMMM d, yyyy');
+
+    return longDateFormat;
   };
 
   return {
     company,
-    dateFGCompleted: extractDate(date_fg_completed),
-    dateSurveyCompleted: extractDate(date_survey_completed),
+    dateFGCompleted: extractLongDateFormat(date_fg_completed),
+    dateSurveyCompleted: extractLongDateFormat(date_survey_completed),
     notes,
     payment,
-    paymentExpirationDate: payment_expiration_date,
+    paymentExpirationDate: extractLongDateFormat(payment_expiration_date),
     paymentLeft: payment_left,
     paymentReceived: payment_received,
     stage,
