@@ -59,6 +59,13 @@ const EditSurvey = ({
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
 
+    const focusGroupCompleted = dateFGCompleted !== null;
+
+    if (selectedStageValue === 'Completed' && !focusGroupCompleted) {
+      window.alert('Please complete Date Focus Group Completed');
+      return;
+    }
+
     const updatedSurvey = {
       id: selectedSurveyData.id,
       company: companyRef.current!.value,

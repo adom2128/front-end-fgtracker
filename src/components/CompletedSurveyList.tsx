@@ -3,6 +3,7 @@ import { SurveyData } from '../types/types';
 import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';
 import './CompletedSurveyList.css';
+import { formatBoolean } from '../helpers';
 
 interface CompletedSurveyListProps {
   surveys: SurveyData[];
@@ -42,7 +43,7 @@ const CompletedSurveyList = ({
                   <td>{survey.payment}</td>
                   <td>{survey.notes}</td>
                   <td>{survey.dateFGCompleted}</td>
-                  <td>{survey.paymentReceived}</td>
+                  <td>{formatBoolean(survey.paymentReceived)}</td>
                   <td>{survey.paymentLeft}</td>
                   <td>{survey.paymentExpirationDate}</td>
                   <td>
