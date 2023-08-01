@@ -5,11 +5,12 @@ import './MenuButton.css';
 
 interface MenuButtonProps {
   surveyID: number;
+  onViewSurveyClick: (surveyID: number) => void;
   onEditSurveyClick: (surveyID: number) => void;
   onDeleteSurveyClick: (surveyID: number) => void;
 }
 
-const MenuButton = ({ onEditSurveyClick, onDeleteSurveyClick, surveyID }: MenuButtonProps) => {
+const MenuButton = ({ onViewSurveyClick, onEditSurveyClick, onDeleteSurveyClick, surveyID }: MenuButtonProps) => {
   return (
     <>
     <Dropdown>
@@ -18,6 +19,7 @@ const MenuButton = ({ onEditSurveyClick, onDeleteSurveyClick, surveyID }: MenuBu
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
+      <Dropdown.Item onClick={() => onViewSurveyClick(surveyID)}>View</Dropdown.Item>
         <Dropdown.Item onClick={() => onEditSurveyClick(surveyID)}>Edit</Dropdown.Item>
         <Dropdown.Item onClick={() => onDeleteSurveyClick(surveyID)}>Delete</Dropdown.Item>
       </Dropdown.Menu>

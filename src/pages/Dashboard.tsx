@@ -5,15 +5,17 @@ interface DashboardProps {
   surveys: SurveyData[];
   onEditSurveyClick: (surveyID: number) => void;
   onDeleteSurveyClick: (surveyID: number) => void;
+  onViewSurveyClick: (surveyID: number) => void;
 }
 
-const Dashboard = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: DashboardProps) => {
+const Dashboard = ({ surveys, onEditSurveyClick, onDeleteSurveyClick, onViewSurveyClick }: DashboardProps) => {
   return (
     <>
       <SurveyList
         surveys={surveys}
         onDeleteSurveyClick={onDeleteSurveyClick}
         onEditSurveyClick={onEditSurveyClick}
+        onViewSurveyClick={onViewSurveyClick}
       />
     </>
   );

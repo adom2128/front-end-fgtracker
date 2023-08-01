@@ -9,9 +9,10 @@ interface SurveyListProps {
   surveys: SurveyData[];
   onEditSurveyClick: (surveyID: number) => void;
   onDeleteSurveyClick: (surveyID: number) => void;
+  onViewSurveyClick: (surveyID: number) => void
 }
 
-const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: SurveyListProps) => {
+const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick, onViewSurveyClick }: SurveyListProps) => {
 
   return (
     <>
@@ -22,7 +23,6 @@ const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: SurveyL
               <th>Company</th>
               <th>Topic</th>
               <th>Payment</th>
-              <th>Notes</th>
               <th>Stage</th>
               <th>Date Submitted</th>
               <th></th>
@@ -34,12 +34,12 @@ const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick }: SurveyL
                 <td>{survey.company}</td>
                 <td>{survey.topic}</td>
                 <td>{survey.payment}</td>
-                <td>{survey.notes}</td>
                 <td>{survey.stage}</td>
                 <td>{survey.dateSurveyCompleted}</td>
                 <td>
                   <MenuButton
                     surveyID={survey.id}
+                    onViewSurveyClick={onViewSurveyClick}
                     onDeleteSurveyClick={onDeleteSurveyClick}
                     onEditSurveyClick={onEditSurveyClick}
                   />

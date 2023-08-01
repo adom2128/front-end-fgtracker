@@ -137,9 +137,11 @@ const EditSurvey = ({
                   <Form.Group>
                     <Form.Label>Date Survey Submitted</Form.Label>
                     <DatePicker
+                      todayButton="Today"
                       selected={dateSurveyCompleted}
                       onChange={(date) => setDateSurveyCompleted(date)}
                       dateFormat="MMMM d, yyyy"
+                      className="form-control"
                     />
                   </Form.Group>
                 </Col>
@@ -187,9 +189,11 @@ const EditSurvey = ({
                   <Form.Group>
                     <Form.Label>Date Focus Group Completed</Form.Label>
                     <DatePicker
+                      todayButton="Today"
                       selected={dateFGCompleted}
                       onChange={(date) => setDateFGCompleted(date)}
                       dateFormat="MMMM d, yyyy"
+                      className="form-control"
                     />
                   </Form.Group>
                 </Col>
@@ -219,9 +223,11 @@ const EditSurvey = ({
                   <Form.Group>
                     <Form.Label>Payment Expiration Date</Form.Label>
                     <DatePicker
+                      todayButton="Today"
                       selected={paymentExpirationDate}
                       onChange={(date) => setPaymentExpirationDate(date)}
                       dateFormat="MMMM d, yyyy"
+                      className="form-control"
                     />
                   </Form.Group>
                 </Col>

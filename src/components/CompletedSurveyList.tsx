@@ -1,4 +1,3 @@
-import CompletedSurvey from './CompletedSurvey';
 import { SurveyData } from '../types/types';
 import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';
@@ -9,12 +8,14 @@ interface CompletedSurveyListProps {
   surveys: SurveyData[];
   onEditSurveyClick: (surveyID: number) => void;
   onDeleteSurveyClick: (surveyID: number) => void;
+  onViewSurveyClick: (surveyID: number) => void;
 }
 
 const CompletedSurveyList = ({
   surveys,
   onDeleteSurveyClick,
   onEditSurveyClick,
+  onViewSurveyClick,
 }: CompletedSurveyListProps) => {
   return (
     <>
@@ -25,7 +26,6 @@ const CompletedSurveyList = ({
               <th>Company</th>
               <th>Topic</th>
               <th>Payment</th>
-              <th>Notes</th>
               <th>Date Participated</th>
               <th>Payment Received</th>
               <th>Payment Left</th>
@@ -41,7 +41,6 @@ const CompletedSurveyList = ({
                   <td>{survey.company}</td>
                   <td>{survey.topic}</td>
                   <td>{survey.payment}</td>
-                  <td>{survey.notes}</td>
                   <td>{survey.dateFGCompleted}</td>
                   <td>{formatBoolean(survey.paymentReceived)}</td>
                   <td>{survey.paymentLeft}</td>
@@ -49,6 +48,7 @@ const CompletedSurveyList = ({
                   <td>
                     <MenuButton
                       surveyID={survey.id}
+                      onViewSurveyClick={onViewSurveyClick}
                       onDeleteSurveyClick={onDeleteSurveyClick}
                       onEditSurveyClick={onEditSurveyClick}
                     />

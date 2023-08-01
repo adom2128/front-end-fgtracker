@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -12,7 +13,6 @@ import {
 import { SurveyData } from './types/types';
 import Dashboard from './pages/Dashboard';
 import Completed from './pages/Completed';
-import SurveyPage from './pages/SurveyPage';
 import Home from './pages/Home';
 import FourOhFour from './pages/404';
 import NavBar from './components/NavBar';
@@ -20,18 +20,23 @@ import PlusButton from './components/PlusButton';
 import AddSurveyPopUp from './components/AddSurveyPopUp';
 import EditSurvey from './components/EditSurvey';
 import DeleteModal from './components/DeleteModal';
+import Survey from './components/Survey';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
   const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
   const [showEditSurveyPopup, setShowEditSurveyPopup] = useState(false);
+  const [showViewSurveyPopup, setShowViewSurveyPopup] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedSurveyToEditID, setSelectedSurveyToEditID] = useState<
     number | null
   >(null);
   const [selectedSurveyToDeleteID, setSelectedSurveyToDeleteID] = useState<
     number | null
   >(null);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedSurveyToViewID, setSelectedSurveyToViewID] = useState<
+    number | null
+  >(null);
 
   const fetchSurveys = () => {
     getAllSurveys().then((response) => {
@@ -98,6 +103,21 @@ function App() {
     setSelectedSurveyToEditID(null);
   };
 
+  const handleViewSurveyClick = (surveyID: number) => {
+    setSelectedSurveyToViewID(surveyID);
+    setShowViewSurveyPopup(true);
+  };
+
+  const handleCloseSurvey = () => {
+    setShowViewSurveyPopup(false);
+    setSelectedSurveyToViewID(null);
+  };
+
+  const handleEditSurvey = () => {
+    setShowViewSurveyPopup(false);
+    handleEditSurveyClick(selectedSurveyToViewID!);
+  };
+
   return (
     <Container className="my-4">
       <NavBar />
@@ -109,6 +129,7 @@ function App() {
               surveys={surveysData}
               onDeleteSurveyClick={handleDeleteSurveyClick}
               onEditSurveyClick={handleEditSurveyClick}
+              onViewSurveyClick={handleViewSurveyClick}
             />
           }
           path="dashboard"
@@ -119,11 +140,11 @@ function App() {
               surveys={surveysData}
               onDeleteSurveyClick={handleDeleteSurveyClick}
               onEditSurveyClick={handleEditSurveyClick}
+              onViewSurveyClick={handleViewSurveyClick}
             />
           }
           path="completed"
         >
-          {/* <Route element={<SurveyPage />} path=":completed_survey_id" /> */}
         </Route>
         <Route element={<FourOhFour />} path="*" />
       </Routes>
@@ -134,6 +155,16 @@ function App() {
         onCancel={handleAddSurveyPopupClose}
         onSaveClick={handleAddSurveyPopupSave}
       />
+      {selectedSurveyToViewID !== null && (
+        <Survey
+          selectedSurveyData={
+            surveysData.find((survey) => survey.id === selectedSurveyToViewID)!
+          }
+          show={showViewSurveyPopup}
+          onCancel={handleCloseSurvey}
+          onEdit={handleEditSurvey}
+        />
+      )}
 
       {selectedSurveyToEditID !== null && (
         <EditSurvey
