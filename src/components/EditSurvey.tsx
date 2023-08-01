@@ -1,5 +1,5 @@
 import { useRef, FormEvent, useState } from 'react';
-import { Form, Row, Col, Stack, Button, Modal } from 'react-bootstrap';
+import { Form, Row, Col, Stack, Button, Modal, Alert } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
 import DatePicker from 'react-datepicker';
 import { formatDate } from '../helpers';
@@ -19,6 +19,8 @@ const EditSurvey = ({
   onSaveClick,
   selectedSurveyData,
 }: EditSurveyPopUpProps) => {
+  const [showAlert, setShowAlert] = useState(false);
+
   const [selectedStageValue, setSelectedStageValue] = useState(
     selectedSurveyData.stage
   );
@@ -62,7 +64,8 @@ const EditSurvey = ({
     const focusGroupCompleted = dateFGCompleted !== null;
 
     if (selectedStageValue === 'Completed' && !focusGroupCompleted) {
-      window.alert('Please complete Date Focus Group Completed');
+      setShowAlert(true);
+      // window.alert('Please fill out the "Date Focus Group Completed" field when the stage is set to "Completed."');
       return;
     }
 
@@ -102,6 +105,7 @@ const EditSurvey = ({
         <Modal.Header closeButton>
           <Modal.Title>Edit</Modal.Title>
         </Modal.Header>
+
         <Form onSubmit={handleSave}>
           <Modal.Body>
             <Stack gap={4}>
@@ -149,7 +153,35 @@ const EditSurvey = ({
                   </Form.Group>
                 </Col>
               </Row>
-
+              <Row>
+                <Form.Group>
+                  <Form.Label>Stage</Form.Label>
+                  <Form.Select
+                    value={selectedStageValue}
+                    onChange={handleStageChange}
+                  >
+                    <option value={selectedStageValue}>
+                      {selectedStageValue}
+                    </option>
+                    {stageOptions.map((option) =>
+                      option !== selectedSurveyData.stage ? (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ) : null
+                    )}
+                  </Form.Select>
+                </Form.Group>
+              </Row>
+              <Alert
+                variant="danger"
+                show={showAlert}
+                onClose={() => setShowAlert(false)}
+                dismissible
+              >
+                Please fill out the "Date Focus Group Completed" field when the
+                stage is set to "Completed."
+              </Alert>
               <Row>
                 <Col>
                   <Form.Group>
@@ -195,24 +227,6 @@ const EditSurvey = ({
                 </Col>
               </Row>
               <Form.Group>
-                <Form.Label>Stage</Form.Label>
-                <Form.Select
-                  value={selectedStageValue}
-                  onChange={handleStageChange}
-                >
-                  <option value={selectedStageValue}>
-                    {selectedStageValue}
-                  </option>
-                  {stageOptions.map((option) =>
-                    option !== selectedSurveyData.stage ? (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ) : null
-                  )}
-                </Form.Select>
-              </Form.Group>
-              <Form.Group>
                 <Form.Label>Notes</Form.Label>
                 <Form.Control
                   ref={notesRef}
@@ -223,6 +237,7 @@ const EditSurvey = ({
               </Form.Group>
             </Stack>
           </Modal.Body>
+
           <Modal.Footer>
             <Button type="submit" variant="primary">
               Save
