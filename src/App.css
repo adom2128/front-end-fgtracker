@@ -1,0 +1,12 @@
+body {
+    background-color: #e0e2dc;
+}
+
+.btn {
+    /* background-color: #98ada4; */
+    /* border: none; */
+}
+
+.btn:active {
+    /* background-color: #98ada4 !important; */
+}

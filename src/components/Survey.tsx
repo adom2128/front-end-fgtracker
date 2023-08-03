@@ -1,6 +1,7 @@
 import { Modal, Button, Stack, Row, Col } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
 import { formatBoolean } from '../helpers';
+import './Survey.css'
 
 interface Survey {
   show: boolean;
@@ -17,54 +18,51 @@ const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: Survey) => {
           {selectedSurveyData.topic} - {selectedSurveyData.company}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Stack gap={4}>
+      <Modal.Body className="modal-body-survey">
+        <Stack gap={3}>
           <Row>
-            <Col>Company: {selectedSurveyData.company}</Col>
+            <Col className="titles">Company:</Col> <Col>{selectedSurveyData.company}</Col>
           </Row>
           <Row>
-            <Col>Topic: {selectedSurveyData.topic}</Col>
+            <Col className="titles">Topic:</Col> <Col>{selectedSurveyData.topic}</Col>
           </Row>
           <Row>
-            <Col>
-              Date Survey Submitted: {selectedSurveyData.dateSurveyCompleted}
-            </Col>{' '}
+            <Col className="titles">Date Survey Submitted:</Col>{' '}
+            <Col>{selectedSurveyData.dateSurveyCompleted}</Col>
           </Row>
           <Row>
-            <Col>Payment: {selectedSurveyData.payment}</Col>
-          </Row>
-
-          <Row>
-            <Col>Stage: {selectedSurveyData.stage}</Col>
-          </Row>
-          <Row>
-            <Col>
-              Date Focus Group Completed: {selectedSurveyData.dateFGCompleted}
-            </Col>
+            <Col className="titles">Payment:</Col> <Col>${selectedSurveyData.payment}</Col>
           </Row>
 
           <Row>
-            <Col>
-              {' '}
-              Payment Received:{' '}
-              {formatBoolean(selectedSurveyData.paymentReceived)}
-            </Col>
+            <Col className="titles">Stage:</Col>
+            <Col> {selectedSurveyData.stage}</Col>
           </Row>
           <Row>
-            <Col>Payment Left: {selectedSurveyData.paymentLeft}</Col>{' '}
+            <Col className="titles">Date Focus Group Completed:</Col>
+            <Col> {selectedSurveyData.dateFGCompleted}</Col>
+          </Row>
+
+          <Row>
+            <Col className="titles">Payment Received:</Col>
+            <Col>{formatBoolean(selectedSurveyData.paymentReceived)}</Col>
           </Row>
           <Row>
-            <Col>
-              Payment Expiration Date:{' '}
+            <Col className="titles">Payment Left: </Col>
+            <Col>${selectedSurveyData.paymentLeft}</Col>
+          </Row>
+          <Row>
+            <Col className="titles">
+              Payment Expiration Date:</Col><Col>
               {selectedSurveyData.paymentExpirationDate}
             </Col>
           </Row>
 
           <Row>
-            <Col>Notes:</Col>
+            <Col className="titles">Notes:</Col>
           </Row>
           <Row>
-            <Col>{selectedSurveyData.notes}</Col>
+            <Col className="notes-section">{selectedSurveyData.notes}</Col>
           </Row>
         </Stack>
       </Modal.Body>

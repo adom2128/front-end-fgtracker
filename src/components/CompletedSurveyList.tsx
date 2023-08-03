@@ -41,9 +41,10 @@ const CompletedSurveyList = ({
                   <td>{survey.company}</td>
                   <td>{survey.topic}</td>
                   <td>{survey.payment}</td>
+
                   <td>{survey.dateFGCompleted}</td>
                   <td>{formatBoolean(survey.paymentReceived)}</td>
-                  <td>{survey.paymentLeft}</td>
+                  <td>${survey.paymentLeft}</td>
                   <td>{survey.paymentExpirationDate}</td>
                   <td>
                     <MenuButton

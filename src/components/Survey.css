@@ -1,0 +1,16 @@
+.modal-body-survey {
+  margin-left: 24px;
+  margin-top: 18px;
+}
+
+.notes-section {
+  border: 1px solid;
+  padding: 1rem;
+  border-radius: 4px;
+  max-width: 90%;
+  margin-left: 10px;
+}
+
+.titles {
+  font-weight: bold;
+}

@@ -47,19 +47,27 @@ export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
   };
 };
 
-
 export const formatDate = (date: Date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
 
 export const formatBoolean = (boolean: Boolean | null | undefined) => {
-    if (boolean) {
-        return "Yes"
-    } else {
-        return "No"
-    }
-}
+  if (boolean) {
+    return 'Yes';
+  } else {
+    return 'No';
+  }
+};
+
+export const companyEmails = (company: string) => {
+  const companyFocusGroupApplicationLinks = {
+    'Fieldwork NRC': 'https://www.facebook.com/fieldwork.NRC',
+    'Fieldwork Denver': 'https://www.facebook.com/FieldworkDenver',
+  };
+  const companyLinks: { [key: string]: string } =
+    companyFocusGroupApplicationLinks;
+  return companyLinks[company];
+};

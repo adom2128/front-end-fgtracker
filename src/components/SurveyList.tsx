@@ -3,20 +3,24 @@ import Survey from './Survey';
 import { SurveyData } from '../types/types';
 import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';
-import './SurveyList.css'
+import './SurveyList.css';
 
 interface SurveyListProps {
   surveys: SurveyData[];
   onEditSurveyClick: (surveyID: number) => void;
   onDeleteSurveyClick: (surveyID: number) => void;
-  onViewSurveyClick: (surveyID: number) => void
+  onViewSurveyClick: (surveyID: number) => void;
 }
 
-const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick, onViewSurveyClick }: SurveyListProps) => {
-
+const SurveyList = ({
+  surveys,
+  onEditSurveyClick,
+  onDeleteSurveyClick,
+  onViewSurveyClick,
+}: SurveyListProps) => {
   return (
     <>
-      <div className="table-responsive survey-table">
+      <div className="table-responsive survey-table result-tables">
         <Table hover>
           <thead>
             <tr>
@@ -33,7 +37,7 @@ const SurveyList = ({ surveys, onEditSurveyClick, onDeleteSurveyClick, onViewSur
               <tr key={survey.id}>
                 <td>{survey.company}</td>
                 <td>{survey.topic}</td>
-                <td>{survey.payment}</td>
+                <td>${survey.payment}</td>
                 <td>{survey.stage}</td>
                 <td>{survey.dateSurveyCompleted}</td>
                 <td>

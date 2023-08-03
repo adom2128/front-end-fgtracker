@@ -1,5 +1,6 @@
 import CompletedSurveyList from '../components/CompletedSurveyList';
 import { SurveyData } from '../types/types';
+import './Completed.css'
 
 interface CompletedProps {
   surveys: SurveyData[];
@@ -10,7 +11,7 @@ interface CompletedProps {
 
 const Completed = ({ surveys, onEditSurveyClick, onDeleteSurveyClick, onViewSurveyClick }: CompletedProps) => {
   return (
-    <div className="table-container">
+    <div className="table-container result-tables">
       <CompletedSurveyList
         surveys={surveys}
         onDeleteSurveyClick={onDeleteSurveyClick}

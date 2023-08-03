@@ -1,4 +1,18 @@
+.nav-bar-body {
+    background-color:#657B6B;
+}
+
 .nav-bar-text {
-    font-size: 32px;
-    margin-right: 20px;
+    font-size: 24px;
+    margin-right: 60px;
+    font-weight: bolder;
+}
+
+.nav-bar-logo {
+    height: 70px;
+}
+
+.nav-bar-nav-links {
+    text-align: center;
+    position: relative;
 }

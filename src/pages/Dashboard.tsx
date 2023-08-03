@@ -1,5 +1,6 @@
 import SurveyList from '../components/SurveyList';
 import { SurveyData } from '../types/types';
+import './Dashboard.css'
 
 interface DashboardProps {
   surveys: SurveyData[];

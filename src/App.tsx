@@ -20,7 +20,11 @@ import PlusButton from './components/PlusButton';
 import AddSurveyPopUp from './components/AddSurveyPopUp';
 import EditSurvey from './components/EditSurvey';
 import DeleteModal from './components/DeleteModal';
+import PrivateRoute from './components/PrivateRoute';
 import Survey from './components/Survey';
+import Login from './pages/Login';
+import { companyEmails } from './helpers';
+import './App.css';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
@@ -118,35 +122,42 @@ function App() {
     handleEditSurveyClick(selectedSurveyToViewID!);
   };
 
+  const handleCompanyCardClick = (company: string) => {
+    const companyLink = companyEmails(company);
+    window.open(companyLink, '_blank');
+  };
+
   return (
     <Container className="my-4">
       <NavBar />
       <Routes>
-        <Route element={<Home surveys={surveysData} />} path="/" />
-        <Route
-          element={
-            <Dashboard
-              surveys={surveysData}
-              onDeleteSurveyClick={handleDeleteSurveyClick}
-              onEditSurveyClick={handleEditSurveyClick}
-              onViewSurveyClick={handleViewSurveyClick}
-            />
-          }
-          path="dashboard"
-        />
-        <Route
-          element={
-            <Completed
-              surveys={surveysData}
-              onDeleteSurveyClick={handleDeleteSurveyClick}
-              onEditSurveyClick={handleEditSurveyClick}
-              onViewSurveyClick={handleViewSurveyClick}
-            />
-          }
-          path="completed"
-        >
-        </Route>
+        <Route element={<Login />} path="/" />
         <Route element={<FourOhFour />} path="*" />
+        {/* <Route element={<PrivateRoute />}> */}
+          <Route element={<Home surveys={surveysData} />} path="/home" />
+          <Route
+            element={
+              <Dashboard
+                surveys={surveysData}
+                onDeleteSurveyClick={handleDeleteSurveyClick}
+                onEditSurveyClick={handleEditSurveyClick}
+                onViewSurveyClick={handleViewSurveyClick}
+              />
+            }
+            path="/dashboard"
+          />
+          <Route
+            element={
+              <Completed
+                surveys={surveysData}
+                onDeleteSurveyClick={handleDeleteSurveyClick}
+                onEditSurveyClick={handleEditSurveyClick}
+                onViewSurveyClick={handleViewSurveyClick}
+              />
+            }
+            path="/completed"
+          />
+        {/* </Route> */}
       </Routes>
       <PlusButton onClick={handlePlusButtonClick} />
 
