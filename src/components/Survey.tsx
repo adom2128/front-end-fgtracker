@@ -13,7 +13,7 @@ interface Survey {
 const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: Survey) => {
   return (
     <Modal show={show} onHide={onCancel} centered>
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className="modal-close-button-styling">
         <Modal.Title>
           {selectedSurveyData.topic} - {selectedSurveyData.company}
         </Modal.Title>

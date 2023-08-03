@@ -1,12 +1,24 @@
 body {
-    background-color: #e0e2dc;
+  background-color: #e0e2dc;
 }
 
-.btn {
-    /* background-color: #98ada4; */
-    /* border: none; */
+.btn-primary {
+  background-color: #98ada4;
+  color: black;
+  border: none;
 }
 
-.btn:active {
-    /* background-color: #98ada4 !important; */
+.btn-primary:hover {
+  background-color: #243d21!important;
+  color: white !important;
+}
+
+.btn-primary:active {
+    background-color: #243d21!important;
+    color: white !important;
+}
+
+.btn-close:hover {
+    background-color: #243d21!important;
+    color: white !important;
 }

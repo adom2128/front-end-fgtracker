@@ -16,7 +16,7 @@ const LoginButton = () => {
       />
       <p>Log in or sign up below</p>
 
-      <button onClick={() => loginWithRedirect()}>Log In</button>
+      <button className="btn" onClick={() => loginWithRedirect()}>Log In</button>
     </div>
   );
 };
