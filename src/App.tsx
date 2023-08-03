@@ -22,9 +22,11 @@ import EditSurvey from './components/EditSurvey';
 import DeleteModal from './components/DeleteModal';
 import PrivateRoute from './components/PrivateRoute';
 import Survey from './components/Survey';
+import LoginButton from './components/LoginButton';
 import Login from './pages/Login';
 import { companyEmails } from './helpers';
 import './App.css';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
@@ -41,6 +43,7 @@ function App() {
   const [selectedSurveyToViewID, setSelectedSurveyToViewID] = useState<
     number | null
   >(null);
+  const { isAuthenticated } = useAuth0();
 
   const fetchSurveys = () => {
     getAllSurveys().then((response) => {
@@ -133,7 +136,7 @@ function App() {
       <Routes>
         <Route element={<Login />} path="/" />
         <Route element={<FourOhFour />} path="*" />
-        {/* <Route element={<PrivateRoute />}> */}
+        <Route element={<PrivateRoute />}>
           <Route element={<Home surveys={surveysData} />} path="/home" />
           <Route
             element={
@@ -157,7 +160,7 @@ function App() {
             }
             path="/completed"
           />
-        {/* </Route> */}
+        </Route>
       </Routes>
       <PlusButton onClick={handlePlusButtonClick} />
 

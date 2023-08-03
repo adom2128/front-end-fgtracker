@@ -3,15 +3,15 @@ import { useAuth0 } from '@auth0/auth0-react';
 import NavBar from './NavBar';
 
 const PrivateRoute = () => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    console.log(isAuthenticated);
+    return <Navigate to="/" />;
   }
 
   return (
     <>
-      <NavBar />
       <Outlet />
     </>
   );

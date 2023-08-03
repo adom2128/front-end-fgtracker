@@ -7,18 +7,21 @@ import App from './App';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+const domain = process.env.REACT_APP_AUTH0_DOMAIN!;
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID!;
+
 root.render(
-  <Auth0Provider
-    domain="dev-2f3ifwrrlxacydim.us.auth0.com"
-    clientId="Lm8whbwhEo8CD3iOyNhjVmZsqMsoQcCE"
-    authorizationParams={{
-      redirect_uri: 'http://localhost:3000/home',
-    }}
-  >
-    <React.StrictMode>
+  <React.StrictMode>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </React.StrictMode>
-  </Auth0Provider>
+    </Auth0Provider>
+  </React.StrictMode>
 );

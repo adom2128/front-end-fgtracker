@@ -1,28 +1,25 @@
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import Profile from './Profile';
-import LogoutButton from './LogoutButton';
 import './NavBar.css';
 
 const NavBar = () => {
   return (
     <Navbar expand="lg" className="nav-bar-body">
-      <Container>
-        <div className="d-flex align-items-center">
-          <Navbar.Brand href="/home">
-            <img
-              src="FGTracker_logo.png"
-              className="nav-bar-logo"
-              alt="FGTracker logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-nav" />
-        </div>
-      </Container>
+      <div className="d-flex align-items-center">
+        <Navbar.Brand>
+          <img
+            src="FGTracker_logo.png"
+            className="nav-bar-logo"
+            alt="FGTracker logo"
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbar-nav" />
+      </div>
 
-      <Navbar.Collapse id="nav-bar-nav-links">
-        <Container>
-          <Nav className="mr-auto">
+      <Navbar.Collapse>
+        <Container className="nav-links-container">
+          <Nav className="nav-links">
             <NavLink to="/home" className="nav-link nav-bar-text">
               Home
             </NavLink>
@@ -34,12 +31,10 @@ const NavBar = () => {
             </NavLink>
           </Nav>
         </Container>
-        <Container>
-          <LogoutButton />
+        <Container className="profile-container">
+          <Profile />
         </Container>
       </Navbar.Collapse>
-
-      <Profile />
     </Navbar>
   );
 };
