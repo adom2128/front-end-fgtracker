@@ -11,7 +11,6 @@ const Login = () => {
     if (isAuthenticated) {
       navigate('/home');
     }
-    console.log(isAuthenticated);
   }, [isAuthenticated]);
 
   if (isLoading) {

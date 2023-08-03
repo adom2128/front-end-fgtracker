@@ -26,20 +26,25 @@ p {
   margin: 15px;
 }
 
-button {
+.button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  background-color: #e0e2dc;
+  color: black;
+  border-color: black;
   border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0056b3;
+.button:hover {
+  background-color: #243d21!important;
+  color: white !important;
 }
 
-button:focus {
-  outline: none;
+.button:active {
+    background-color: #243d21!important;
+    color: white !important;
 }
+
+
+

@@ -9,16 +9,11 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #243d21!important;
+  background-color: #243d21 !important;
   color: white !important;
 }
 
 .btn-primary:active {
-    background-color: #243d21!important;
-    color: white !important;
-}
-
-.btn-close:hover {
-    background-color: #243d21!important;
-    color: white !important;
+  background-color: #243d21 !important;
+  color: white !important;
 }
