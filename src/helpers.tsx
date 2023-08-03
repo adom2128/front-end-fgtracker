@@ -62,10 +62,13 @@ export const formatBoolean = (boolean: Boolean | null | undefined) => {
   }
 };
 
-export const companyEmails = (company: string) => {
+export const findCompanyLink = (company: string) => {
   const companyFocusGroupApplicationLinks = {
     'Fieldwork NRC': 'https://www.facebook.com/fieldwork.NRC',
     'Fieldwork Denver': 'https://www.facebook.com/FieldworkDenver',
+    'Probe Research': 'https://www.facebook.com/probemarketresearch',
+    'Winn Winn Research': 'https://www.facebook.com/panelparticipants',
+
   };
   const companyLinks: { [key: string]: string } =
     companyFocusGroupApplicationLinks;

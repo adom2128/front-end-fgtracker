@@ -24,7 +24,6 @@ import PrivateRoute from './components/PrivateRoute';
 import Survey from './components/Survey';
 import LoginButton from './components/LoginButton';
 import Login from './pages/Login';
-import { companyEmails } from './helpers';
 import './App.css';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -102,12 +101,10 @@ function App() {
     updateSurvey(updatedSurvey, surveyID).then(() => {
       fetchSurveys();
     });
-    setSelectedSurveyToEditID(null);
   };
 
   const handleEditSurveyPopupClose = () => {
     setShowEditSurveyPopup(false);
-    setSelectedSurveyToEditID(null);
   };
 
   const handleViewSurveyClick = (surveyID: number) => {
@@ -125,10 +122,10 @@ function App() {
     handleEditSurveyClick(selectedSurveyToViewID!);
   };
 
-  const handleCompanyCardClick = (company: string) => {
-    const companyLink = companyEmails(company);
-    window.open(companyLink, '_blank');
-  };
+  // const handleCompanyCardClick = (company: string) => {
+  //   const companyLink = companyEmails(company);
+  //   window.open(companyLink, '_blank');
+  // };
 
   return (
     <Container className="my-4">

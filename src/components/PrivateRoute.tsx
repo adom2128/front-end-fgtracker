@@ -6,7 +6,6 @@ const PrivateRoute = () => {
   const { isAuthenticated } = useAuth0();
 
   if (!isAuthenticated) {
-    console.log(isAuthenticated);
     return <Navigate to="/" />;
   }
 

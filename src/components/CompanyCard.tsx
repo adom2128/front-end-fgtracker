@@ -1,9 +1,11 @@
 import { Card, Stack } from 'react-bootstrap';
 import './CompanyCard.css';
+import { findCompanyLink } from '../helpers';
 
 interface CompanyCard {
   company: string;
 }
+
 
 const CompanyCard = ({ company }: CompanyCard) => {
   return (
@@ -13,7 +15,7 @@ const CompanyCard = ({ company }: CompanyCard) => {
           gap={2}
           className="align-items-center justify-content-center h-100"
         >
-          <span className="fs-5">{company}</span>
+          <span className="fs-5"><a href={findCompanyLink(company)}>{company}</a></span>
         </Stack>
       </Card.Body>
     </Card>
