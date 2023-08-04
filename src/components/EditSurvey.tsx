@@ -1,4 +1,4 @@
-import { useRef, FormEvent, useState } from 'react';
+import { useRef, FormEvent, useState, useEffect } from 'react';
 import { Form, Row, Col, Stack, Button, Modal, Alert } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
 import DatePicker from 'react-datepicker';
@@ -24,6 +24,14 @@ const EditSurvey = ({
   const [selectedStageValue, setSelectedStageValue] = useState(
     selectedSurveyData.stage
   );
+
+  useEffect(() => {
+    setSelectedStageValue(selectedSurveyData.stage);
+    if (!show) {
+      setShowAlert(false);
+    }
+  }, [selectedSurveyData.stage, show]);
+
   const [paymentReceivedValue, setPaymentReceivedValue] = useState(
     selectedSurveyData.paymentReceived
   );
@@ -65,7 +73,6 @@ const EditSurvey = ({
 
     if (selectedStageValue === 'Completed' && !focusGroupCompleted) {
       setShowAlert(true);
-      // window.alert('Please fill out the "Date Focus Group Completed" field when the stage is set to "Completed."');
       return;
     }
 
@@ -162,16 +169,11 @@ const EditSurvey = ({
                     value={selectedStageValue}
                     onChange={handleStageChange}
                   >
-                    <option value={selectedStageValue}>
-                      {selectedStageValue}
-                    </option>
-                    {stageOptions.map((option) =>
-                      option !== selectedSurveyData.stage ? (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ) : null
-                    )}
+                    {stageOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
                   </Form.Select>
                 </Form.Group>
               </Row>

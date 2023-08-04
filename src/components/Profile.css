@@ -1,9 +1,4 @@
-.profile-container {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  max-height: 100px;
-}
+
 
 h6 {
   width: 90px;
@@ -13,7 +8,7 @@ h6 {
 }
 
 .user-picture {
-  height: 60px;
+  height: 50px;
   margin: 5px;
   border-radius: 50%
 }
