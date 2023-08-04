@@ -6,19 +6,25 @@ interface CompanyCardProps {
   company: string;
 }
 
-
 const CompanyCard = ({ company }: CompanyCardProps) => {
   return (
-    <Card className="h-11 text-decoration-none card">
-      <Card.Body>
-        <Stack
-          gap={2}
-          className="align-items-center justify-content-center h-100"
-        >
-          <span className="fs-5"><a href={findCompanyLink(company)}>{company}</a></span>
-        </Stack>
-      </Card.Body>
-    </Card>
+    <div className="card-space">
+      <Card className="text-decoration-none card">
+        <Card.Body>
+          <Stack className="align-items-center justify-content-center h-100">
+            <span className="fs-5">
+              <a
+                href={findCompanyLink(company)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {company}
+              </a>
+            </span>
+          </Stack>
+        </Card.Body>
+      </Card>
+    </div>
   );
 };
 export default CompanyCard;

@@ -1,11 +1,21 @@
 .card {
-  transition: translate ease-in-out 100ms, box-shadow ease-in-out 100ms;
-  height: 15rem;
-  margin-top: 20px;
+  transition: transform ease-in-out 100ms, box-shadow ease-in-out 100ms;
+  height: 8rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e0e2dc;
+  width: 20rem;
 }
 
 .card:hover,
 .card:focus {
-  translate: 0 -5px;
+  transform: translateY(-5px);
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-space {
+  max-width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
