@@ -3,14 +3,14 @@ import { SurveyData } from '../types/types';
 import { formatBoolean } from '../helpers';
 import './Survey.css'
 
-interface Survey {
+interface SurveyProps {
   show: boolean;
   onCancel: () => void;
   onEdit: () => void;
   selectedSurveyData: SurveyData;
 }
 
-const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: Survey) => {
+const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: SurveyProps) => {
   return (
     <Modal show={show} onHide={onCancel} centered>
       <Modal.Header closeButton className="modal-close-button-styling">

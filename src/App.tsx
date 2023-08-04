@@ -22,10 +22,8 @@ import EditSurvey from './components/EditSurvey';
 import DeleteModal from './components/DeleteModal';
 import PrivateRoute from './components/PrivateRoute';
 import Survey from './components/Survey';
-import LoginButton from './components/LoginButton';
 import Login from './pages/Login';
 import './App.css';
-import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
@@ -42,7 +40,6 @@ function App() {
   const [selectedSurveyToViewID, setSelectedSurveyToViewID] = useState<
     number | null
   >(null);
-  const { isAuthenticated } = useAuth0();
 
   const fetchSurveys = () => {
     getAllSurveys().then((response) => {
@@ -122,10 +119,6 @@ function App() {
     handleEditSurveyClick(selectedSurveyToViewID!);
   };
 
-  // const handleCompanyCardClick = (company: string) => {
-  //   const companyLink = companyEmails(company);
-  //   window.open(companyLink, '_blank');
-  // };
 
   return (
     <Container className="my-4">

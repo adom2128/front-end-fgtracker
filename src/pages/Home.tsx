@@ -26,11 +26,11 @@ const Home = ({ surveys }: HomeProps) => {
   return (
     <>
       <Row>
-        <Col>
-          <h1></h1>
-          It's been 6 months since you participated in a focus group from one of
-          these companies, apply now:
-        </Col>
+        <p></p>
+          <p>
+            It's been 6 months since you participated in a focus group from one
+            of these companies, apply now:
+          </p>
       </Row>
       <Row xs={1} sm={2} lg={3} xl={4} className="g-3">
         {filteredSurveys.map((survey) => (

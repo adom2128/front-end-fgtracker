@@ -21,7 +21,7 @@ const MenuButton = ({
       <Dropdown>
         <Dropdown.Toggle
           variant="success"
-          id="dropdown-basic-${surveyID}"
+          id={`dropdown-basic-${surveyID}`}
           className="dropdown-btn"
         >
           <FontAwesomeIcon icon={faEllipsisVertical} />

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import Survey from './Survey';
 import { SurveyData } from '../types/types';
 import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';

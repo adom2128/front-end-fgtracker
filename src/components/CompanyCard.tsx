@@ -2,12 +2,12 @@ import { Card, Stack } from 'react-bootstrap';
 import './CompanyCard.css';
 import { findCompanyLink } from '../helpers';
 
-interface CompanyCard {
+interface CompanyCardProps {
   company: string;
 }
 
 
-const CompanyCard = ({ company }: CompanyCard) => {
+const CompanyCard = ({ company }: CompanyCardProps) => {
   return (
     <Card className="h-11 text-decoration-none card">
       <Card.Body>
