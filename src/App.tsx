@@ -23,6 +23,7 @@ import DeleteModal from './components/DeleteModal';
 import PrivateRoute from './components/PrivateRoute';
 import Survey from './components/Survey';
 import Login from './pages/Login';
+import Payments from './pages/Payments';
 import './App.css';
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
     number | null
   >(null);
 
-  const fetchSurveys = async () => {
+  const fetchSurveys = async () => {;
     const response = await getAllSurveys();
     setSurveysData(response);
   };
@@ -119,7 +120,7 @@ function App() {
   );
 
   return (
-    <Container className="my-4">
+    <Container fluid="xl">
       <NavBar />
       <Routes>
         <Route element={<Login />} path="/" />
@@ -148,6 +149,7 @@ function App() {
             }
             path="/completed"
           />
+          <Route element={<Payments />} path="/payments" />
         </Route>
       </Routes>
       <PlusButton onClick={handlePlusButtonClick} />

@@ -48,6 +48,28 @@ const EditSurvey = ({
         : null
     );
 
+  useEffect(() => {
+    if (show) {
+      setSelectedStageValue(selectedSurveyData?.stage);
+      setPaymentReceivedValue(selectedSurveyData?.paymentReceived);
+      setDateSurveyCompleted(
+        selectedSurveyData?.dateSurveyCompleted
+          ? new Date(selectedSurveyData?.dateSurveyCompleted)
+          : null
+      );
+      setDateFGCompleted(
+        selectedSurveyData?.dateFGCompleted
+          ? new Date(selectedSurveyData?.dateFGCompleted)
+          : null
+      );
+      setPaymentExpirationDate(
+        selectedSurveyData?.paymentExpirationDate
+          ? new Date(selectedSurveyData?.paymentExpirationDate)
+          : null
+      );
+    }
+  }, [show, selectedSurveyData]);
+
   const companyRef = useRef<HTMLInputElement>(null);
   const topicRef = useRef<HTMLInputElement>(null);
   const paymentRef = useRef<HTMLInputElement>(null);

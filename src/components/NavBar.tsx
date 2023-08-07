@@ -5,7 +5,7 @@ import './NavBar.css';
 
 const NavBar = () => {
   return (
-    <Navbar expand="lg" className="nav-bar-body">
+    <Navbar expand="xl" className="nav-bar-body">
       <div className="d-flex align-items-center">
         <Navbar.Brand>
           <img
@@ -18,21 +18,26 @@ const NavBar = () => {
       </div>
 
       <Navbar.Collapse>
-        <Container className="nav-links-container">
-          <Nav className="nav-links">
-            <NavLink to="/home" className="nav-link nav-bar-text">
-              Home
-            </NavLink>
-            <NavLink to="/dashboard" className="nav-link nav-bar-text">
-              Dashboard
-            </NavLink>
-            <NavLink to="/completed" className="nav-link nav-bar-text">
-              Completed
-            </NavLink>
-          </Nav>
-        </Container>
-        <Container className="profile-container">
-          <Profile />
+        <Container className="collapse-container">
+          <Container className="nav-links-container">
+            <Nav className="nav-links">
+              <NavLink to="/home" className="nav-link nav-bar-text">
+                Home
+              </NavLink>
+              <NavLink to="/dashboard" className="nav-link nav-bar-text">
+                Dashboard
+              </NavLink>
+              <NavLink to="/completed" className="nav-link nav-bar-text">
+                Completed
+              </NavLink>
+              <NavLink to="/payments" className="nav-link nav-bar-text">
+                Payments
+              </NavLink>
+            </Nav>
+          </Container>
+          <Container className="profile-container">
+            <Profile />
+          </Container>
         </Container>
       </Navbar.Collapse>
     </Navbar>

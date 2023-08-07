@@ -1,7 +1,7 @@
 import { Modal, Button, Stack, Row, Col } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
 import { formatBoolean } from '../helpers';
-import './Survey.css'
+import './Survey.css';
 
 interface SurveyProps {
   show: boolean;
@@ -10,7 +10,12 @@ interface SurveyProps {
   selectedSurveyData: SurveyData;
 }
 
-const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: SurveyProps) => {
+const Survey = ({
+  show,
+  onCancel,
+  onEdit,
+  selectedSurveyData,
+}: SurveyProps) => {
   return (
     <Modal show={show} onHide={onCancel} centered>
       <Modal.Header closeButton className="modal-close-button-styling">
@@ -21,17 +26,20 @@ const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: SurveyProps) => 
       <Modal.Body className="modal-body-survey">
         <Stack gap={3}>
           <Row>
-            <Col className="titles">Company:</Col> <Col>{selectedSurveyData.company}</Col>
+            <Col className="titles">Company:</Col>{' '}
+            <Col>{selectedSurveyData.company}</Col>
           </Row>
           <Row>
-            <Col className="titles">Topic:</Col> <Col>{selectedSurveyData.topic}</Col>
+            <Col className="titles">Topic:</Col>{' '}
+            <Col>{selectedSurveyData.topic}</Col>
           </Row>
           <Row>
             <Col className="titles">Date Survey Submitted:</Col>{' '}
             <Col>{selectedSurveyData.dateSurveyCompleted}</Col>
           </Row>
           <Row>
-            <Col className="titles">Payment:</Col> <Col>${selectedSurveyData.payment}</Col>
+            <Col className="titles">Payment:</Col>{' '}
+            <Col>${selectedSurveyData.payment}</Col>
           </Row>
 
           <Row>
@@ -52,10 +60,8 @@ const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: SurveyProps) => 
             <Col>${selectedSurveyData.paymentLeft}</Col>
           </Row>
           <Row>
-            <Col className="titles">
-              Payment Expiration Date:</Col><Col>
-              {selectedSurveyData.paymentExpirationDate}
-            </Col>
+            <Col className="titles">Payment Expiration Date:</Col>
+            <Col>{selectedSurveyData.paymentExpirationDate}</Col>
           </Row>
 
           <Row>

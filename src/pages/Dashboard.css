@@ -1,6 +1,5 @@
 .result-tables {
-   
-    border: 20px solid white;
-    
-
-} 
+  min-height: 600px;
+  border: 20px solid white;
+  background-color: white;
+}
