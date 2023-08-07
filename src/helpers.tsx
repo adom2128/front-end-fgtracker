@@ -12,7 +12,7 @@ export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
     payment_left,
     payment_received,
     stage,
-    survey_id,
+    id,
     topic,
   } = apiSurvey;
 
@@ -42,12 +42,16 @@ export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
     paymentLeft: payment_left,
     paymentReceived: payment_received,
     stage,
-    id: survey_id,
+    id,
     topic,
   };
 };
 
-export const formatDate = (date: Date) => {
+export const formatDate = (date: Date | null) => {
+  if (!date) {
+    return null;
+  }
+
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
@@ -68,9 +72,9 @@ export const findCompanyLink = (company: string) => {
     'Fieldwork Denver': 'https://www.facebook.com/FieldworkDenver',
     'Probe Research': 'https://www.facebook.com/probemarketresearch',
     'Winn Winn Research': 'https://www.facebook.com/panelparticipants',
-
   };
   const companyLinks: { [key: string]: string } =
     companyFocusGroupApplicationLinks;
   return companyLinks[company];
 };
+

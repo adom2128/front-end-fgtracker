@@ -22,6 +22,6 @@ export interface ApiSurveyData {
   payment_left: number;
   payment_received: boolean;
   stage: string;
-  survey_id: number;
+  id: number;
   topic: string;
 }

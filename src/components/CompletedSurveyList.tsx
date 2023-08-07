@@ -35,8 +35,8 @@ const CompletedSurveyList = ({
           </thead>
           <tbody>
             {surveys
-              .filter((survey) => survey.stage === 'Completed')
-              .map((survey) => (
+              ?.filter((survey) => survey.stage === 'Completed')
+              ?.map((survey) => (
                 <tr key={survey.id}>
                   <td>{survey.company}</td>
                   <td>{survey.topic}</td>

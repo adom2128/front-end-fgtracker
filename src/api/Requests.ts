@@ -17,7 +17,7 @@ export const getAllSurveys = async () => {
 export const postSurvey = async (newSurvey: Partial<SurveyData>) => {
   try {
     const response = await axios.post(`${baseUrl}/surveys`, newSurvey);
-    return response.data;
+    return convertFromApi(response.data);
   } catch (error) {
     console.log(error);
   }

@@ -62,7 +62,7 @@ function App() {
     setShowAddSurveyPopup(false);
 
     const response = await postSurvey(newSurvey);
-    setSurveysData((prev) => [...prev, response]);
+    setSurveysData((prev) => [...prev, response!]);
   };
 
   const handleEditSurveyClick = (surveyID: number) => {
@@ -75,16 +75,16 @@ function App() {
   };
 
   const handleDeleteSurveyClick = (surveyID: number) => {
+    setShowEditSurveyPopup(false);
     setSelectedSurveyToDeleteID(surveyID);
     setShowDeleteModal(true);
   };
 
   const handleConfirmDeleteSurvey = async () => {
-    if (selectedSurveyToDeleteID !== null) {
-      await deleteSurvey(selectedSurveyToDeleteID);
-      fetchSurveys();
-    }
+    setShowEditSurveyPopup(false);
     setShowDeleteModal(false);
+    await deleteSurvey(selectedSurveyToDeleteID!);
+    fetchSurveys();
   };
 
   const handleEditSurveyPopupSave = async (
@@ -107,13 +107,16 @@ function App() {
 
   const handleCloseSurvey = () => {
     setShowViewSurveyPopup(false);
-    setSelectedSurveyToViewID(null);
   };
 
   const handleEditSurvey = () => {
     setShowViewSurveyPopup(false);
     handleEditSurveyClick(selectedSurveyToViewID!);
   };
+
+  const selectedSurveyData = surveysData.find(
+    (survey) => survey.id === selectedSurveyToEditID
+  );
 
   return (
     <Container className="my-4">
@@ -165,11 +168,9 @@ function App() {
         />
       )}
 
-      {selectedSurveyToEditID !== null && (
+      {selectedSurveyData && (
         <EditSurvey
-          selectedSurveyData={
-            surveysData.find((survey) => survey.id === selectedSurveyToEditID)!
-          }
+          selectedSurveyData={selectedSurveyData}
           show={showEditSurveyPopup}
           onCancel={handleEditSurveyPopupClose}
           onSaveClick={handleEditSurveyPopupSave}

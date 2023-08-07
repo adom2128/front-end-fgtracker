@@ -22,48 +22,36 @@ const EditSurvey = ({
   const [showAlert, setShowAlert] = useState(false);
 
   const [selectedStageValue, setSelectedStageValue] = useState(
-    selectedSurveyData.stage
+    selectedSurveyData?.stage
   );
-
-  useEffect(() => {
-    setSelectedStageValue(selectedSurveyData.stage);
-    if (!show) {
-      setShowAlert(false);
-    }
-  }, [selectedSurveyData.stage, show]);
 
   const [paymentReceivedValue, setPaymentReceivedValue] = useState(
-    selectedSurveyData.paymentReceived
+    selectedSurveyData?.paymentReceived
   );
 
-  const initialDateSurveyCompleted = selectedSurveyData.dateSurveyCompleted
-    ? new Date(selectedSurveyData.dateSurveyCompleted)
-    : null;
-
-  const initialDateFGCompleted = selectedSurveyData.dateFGCompleted
-    ? new Date(selectedSurveyData.dateFGCompleted)
-    : null;
-
-  const initialPaymentExpirationDate = selectedSurveyData.paymentExpirationDate
-    ? new Date(selectedSurveyData.paymentExpirationDate)
-    : null;
-
   const [dateSurveyCompleted, setDateSurveyCompleted] = useState<Date | null>(
-    initialDateSurveyCompleted
+    selectedSurveyData?.dateSurveyCompleted
+      ? new Date(selectedSurveyData?.dateSurveyCompleted)
+      : null
   );
 
   const [dateFGCompleted, setDateFGCompleted] = useState<Date | null>(
-    initialDateFGCompleted
+    selectedSurveyData?.dateFGCompleted
+      ? new Date(selectedSurveyData?.dateFGCompleted)
+      : null
   );
 
   const [paymentExpirationDate, setPaymentExpirationDate] =
-    useState<Date | null>(initialPaymentExpirationDate);
+    useState<Date | null>(
+      selectedSurveyData?.paymentExpirationDate
+        ? new Date(selectedSurveyData?.paymentExpirationDate)
+        : null
+    );
 
   const companyRef = useRef<HTMLInputElement>(null);
   const topicRef = useRef<HTMLInputElement>(null);
   const paymentRef = useRef<HTMLInputElement>(null);
   const notesRef = useRef<HTMLTextAreaElement>(null);
-  const paymentReceivedRef = useRef<HTMLInputElement>(null);
   const paymentLeftRef = useRef<HTMLInputElement>(null);
 
   const handleSave = (e: FormEvent) => {
@@ -82,15 +70,11 @@ const EditSurvey = ({
       topic: topicRef.current!.value,
       payment: Number(paymentRef.current!.value),
       notes: notesRef.current!.value,
-      date_survey_completed: dateSurveyCompleted
-        ? formatDate(dateSurveyCompleted)
-        : null,
-      date_fg_completed: dateFGCompleted ? formatDate(dateFGCompleted) : null,
-      payment_received: paymentReceivedRef.current?.checked || false,
+      date_survey_completed: formatDate(dateSurveyCompleted),
+      date_fg_completed: formatDate(dateFGCompleted),
+      payment_received: paymentReceivedValue,
       payment_left: Number(paymentLeftRef.current!.value),
-      payment_expiration_date: paymentExpirationDate
-        ? formatDate(paymentExpirationDate)
-        : null,
+      payment_expiration_date: formatDate(paymentExpirationDate),
       stage: selectedStageValue,
     };
     onSaveClick(updatedSurvey, selectedSurveyData.id);
@@ -102,8 +86,7 @@ const EditSurvey = ({
   };
 
   const handlePaymentReceivedChange = (e: FormEvent<HTMLInputElement>) => {
-    const newPaymentReceivedValue = e.currentTarget.checked;
-    setPaymentReceivedValue(newPaymentReceivedValue);
+    setPaymentReceivedValue(e.currentTarget.checked);
   };
 
   return (
@@ -202,12 +185,12 @@ const EditSurvey = ({
                 <Col>
                   <Form.Group>
                     <Form.Label>Payment Received</Form.Label>
-                    <Form.Check
-                      type="checkbox"
-                      ref={paymentReceivedRef}
-                      checked={paymentReceivedValue}
-                      onChange={handlePaymentReceivedChange}
-                    />
+                    <Form.Check>
+                      <Form.Check.Input
+                        checked={paymentReceivedValue}
+                        onChange={handlePaymentReceivedChange}
+                      />
+                    </Form.Check>
                   </Form.Group>
                 </Col>
               </Row>

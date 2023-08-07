@@ -26,9 +26,8 @@ const AddSurveyPopUp = ({
       topic: topicRef.current!.value,
       payment: Number(paymentRef.current!.value),
       notes: notesRef.current!.value,
-      dateSurveyCompleted: formatDate(new Date()),
+      date_survey_completed: formatDate(new Date()),
     };
-
     onSaveClick(newSurvey);
   };
 
