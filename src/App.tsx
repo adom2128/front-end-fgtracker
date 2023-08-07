@@ -41,10 +41,9 @@ function App() {
     number | null
   >(null);
 
-  const fetchSurveys = () => {
-    getAllSurveys().then((response) => {
-      setSurveysData(response);
-    });
+  const fetchSurveys = async () => {
+    const response = await getAllSurveys();
+    setSurveysData(response);
   };
 
   useEffect(() => {
@@ -59,12 +58,11 @@ function App() {
     setShowAddSurveyPopup(false);
   };
 
-  const handleAddSurveyPopupSave = (newSurvey: Partial<SurveyData>) => {
+  const handleAddSurveyPopupSave = async (newSurvey: Partial<SurveyData>) => {
     setShowAddSurveyPopup(false);
 
-    postSurvey(newSurvey).then((response) => {
-      setSurveysData((prev) => [...prev, response]);
-    });
+    const response = await postSurvey(newSurvey);
+    setSurveysData((prev) => [...prev, response]);
   };
 
   const handleEditSurveyClick = (surveyID: number) => {
@@ -81,23 +79,21 @@ function App() {
     setShowDeleteModal(true);
   };
 
-  const handleConfirmDeleteSurvey = () => {
+  const handleConfirmDeleteSurvey = async () => {
     if (selectedSurveyToDeleteID !== null) {
-      deleteSurvey(selectedSurveyToDeleteID).then(() => {
-        fetchSurveys();
-      });
+      await deleteSurvey(selectedSurveyToDeleteID);
+      fetchSurveys();
     }
     setShowDeleteModal(false);
   };
 
-  const handleEditSurveyPopupSave = (
+  const handleEditSurveyPopupSave = async (
     updatedSurvey: SurveyData,
     surveyID: number
   ) => {
     setShowEditSurveyPopup(false);
-    updateSurvey(updatedSurvey, surveyID).then(() => {
-      fetchSurveys();
-    });
+    await updateSurvey(updatedSurvey, surveyID);
+    fetchSurveys();
   };
 
   const handleEditSurveyPopupClose = () => {
@@ -118,7 +114,6 @@ function App() {
     setShowViewSurveyPopup(false);
     handleEditSurveyClick(selectedSurveyToViewID!);
   };
-
 
   return (
     <Container className="my-4">

@@ -1,6 +1,7 @@
 import { useRef, FormEvent } from 'react';
 import { Form, Row, Col, Stack, Button, Modal } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
+import { formatDate } from '../helpers';
 
 interface AddSurveyPopUpProps {
   show: boolean;
@@ -25,6 +26,7 @@ const AddSurveyPopUp = ({
       topic: topicRef.current!.value,
       payment: Number(paymentRef.current!.value),
       notes: notesRef.current!.value,
+      dateSurveyCompleted: formatDate(new Date()),
     };
 
     onSaveClick(newSurvey);

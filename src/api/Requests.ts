@@ -2,11 +2,12 @@ import axios from 'axios';
 import { SurveyData } from '../types/types';
 import { convertFromApi } from '../helpers';
 
+const baseUrl = 'http://127.0.0.1:5000';
+// const baseUrl = 'https://back-end-fgtracker.onrender.com'
+
 export const getAllSurveys = async () => {
   try {
-    const response = await axios.get(
-      'https://back-end-fgtracker.onrender.com/surveys'
-    );
+    const response = await axios.get(`${baseUrl}/surveys`);
     return response.data.map(convertFromApi);
   } catch (error) {
     console.log(error);
@@ -15,10 +16,7 @@ export const getAllSurveys = async () => {
 
 export const postSurvey = async (newSurvey: Partial<SurveyData>) => {
   try {
-    const response = await axios.post(
-      'https://back-end-fgtracker.onrender.com/surveys',
-      newSurvey
-    );
+    const response = await axios.post(`${baseUrl}/surveys`, newSurvey);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -32,7 +30,7 @@ export const updateSurvey = async (
   try {
     console.log(updatedSurvey);
     const response = await axios.put(
-      `https://back-end-fgtracker.onrender.com/surveys/${surveyID}`,
+      `${baseUrl}/surveys/${surveyID}`,
       updatedSurvey
     );
     return response.data;
@@ -43,12 +41,9 @@ export const updateSurvey = async (
 
 export const deleteSurvey = async (surveyID: number) => {
   try {
-    const response = await axios.delete(
-      `https://back-end-fgtracker.onrender.com/surveys/${surveyID}`
-    );
+    const response = await axios.delete(`${baseUrl}/surveys/${surveyID}`);
     return response.data;
   } catch (error) {
     console.log(error);
   }
 };
-
