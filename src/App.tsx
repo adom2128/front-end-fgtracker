@@ -24,6 +24,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Survey from './components/Survey';
 import Login from './pages/Login';
 import Payments from './pages/Payments';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -183,6 +184,7 @@ function App() {
         onHide={hideDeleteModal}
         onConfirmDelete={handleConfirmDeleteSurvey}
       />
+      <Footer />
     </Container>
   );
 }
