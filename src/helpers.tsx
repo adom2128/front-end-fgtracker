@@ -1,9 +1,4 @@
-import {
-  ApiSurveyData,
-  SurveyData,
-  ApiPaymentData,
-  PaymentData,
-} from './types/types';
+import { ApiSurveyData, SurveyData } from './types/types';
 import { format } from 'date-fns';
 
 export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
@@ -19,6 +14,8 @@ export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
     stage,
     id,
     topic,
+    last_four,
+    link,
   } = apiSurvey;
 
   const extractLocalDate = (dateString: string): string => {
@@ -49,6 +46,8 @@ export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
     stage,
     id,
     topic,
+    lastFour: last_four,
+    link,
   };
 };
 
@@ -83,14 +82,20 @@ export const findCompanyLink = (company: string) => {
   return companyLinks[company];
 };
 
-export const convertPaymentFromApi = (
-  apiPayment: ApiPaymentData
-): PaymentData => {
-  const { payment_id, last_four, link } = apiPayment;
+export const formatExpDate = (date: string | null) => {
+  if (!date) {
+    return null;
+  }
 
-  return {
-    paymentId: payment_id,
-    lastFour: last_four,
-    link,
-  };
+  const dateString = '23 November, 2020';
+  const formattedDate = dateString.replace(
+    /(\d+)(?:st|nd|rd|th)? ([A-Za-z]+), (\d+)/,
+    '$1 $2 $3'
+  );
+  const dateObject = new Date(formattedDate);
+
+  const year = dateObject.getFullYear();
+  const month = String(dateObject.getMonth() + 1).padStart(2, '0');
+  const day = String(dateObject.getDate()).padStart(2, '0');
+  return `${month}/${year}`;
 };

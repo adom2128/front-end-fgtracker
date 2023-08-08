@@ -8,8 +8,10 @@ export interface SurveyData {
   paymentExpirationDate?: string;
   paymentLeft?: number;
   paymentReceived?: boolean;
-  stage: string;
+  stage?: string;
   topic: string;
+  lastFour?: string;
+  link?: string;
 }
 
 export interface ApiSurveyData {
@@ -24,16 +26,6 @@ export interface ApiSurveyData {
   stage: string;
   id: number;
   topic: string;
-}
-
-export interface ApiPaymentData {
-  payment_id: number;
   last_four: string;
-  link: string;
-}
-
-export interface PaymentData {
-  paymentId: number;
-  lastFour: string;
   link: string;
 }

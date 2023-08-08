@@ -75,6 +75,8 @@ const EditSurvey = ({
   const paymentRef = useRef<HTMLInputElement>(null);
   const notesRef = useRef<HTMLTextAreaElement>(null);
   const paymentLeftRef = useRef<HTMLInputElement>(null);
+  const paymentLastFourDigitsRef = useRef<HTMLInputElement>(null);
+  const paymentLinkRef = useRef<HTMLInputElement>(null);
 
   const handleSave = (e: FormEvent) => {
     e.preventDefault();
@@ -98,8 +100,10 @@ const EditSurvey = ({
       payment_left: Number(paymentLeftRef.current!.value),
       payment_expiration_date: formatDate(paymentExpirationDate),
       stage: selectedStageValue,
+      last_four: paymentLastFourDigitsRef.current!.value,
+      link: paymentLinkRef.current!.value,
     };
-    onSaveClick(updatedSurvey, selectedSurveyData.id);
+    onSaveClick(updatedSurvey, selectedSurveyData.id!);
   };
 
   const handleStageChange = (e: FormEvent<HTMLSelectElement>) => {
@@ -120,7 +124,7 @@ const EditSurvey = ({
 
         <Form onSubmit={handleSave}>
           <Modal.Body>
-            <Stack gap={4}>
+            <Stack gap={2}>
               <Row>
                 <Col>
                   <Form.Group>
@@ -237,6 +241,24 @@ const EditSurvey = ({
                       className="form-control"
                     />
                   </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Group>
+                    <Form.Label>Payment Last Four Digits</Form.Label>
+                    <Form.Control
+                      ref={paymentLastFourDigitsRef}
+                      defaultValue={selectedSurveyData.lastFour}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Label>Payment Link</Form.Label>
+                  <Form.Control
+                    ref={paymentLinkRef}
+                    defaultValue={selectedSurveyData.link}
+                  />
                 </Col>
               </Row>
               <Form.Group>

@@ -9,9 +9,8 @@ import {
   postSurvey,
   deleteSurvey,
   updateSurvey,
-  getAllPayments,
 } from './api/Requests';
-import { SurveyData, PaymentData } from './types/types';
+import { SurveyData } from './types/types';
 import Dashboard from './pages/Dashboard';
 import Completed from './pages/Completed';
 import Home from './pages/Home';
@@ -30,7 +29,6 @@ import './App.css';
 
 function App() {
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
-  const [paymentsData, setPaymentsData] = useState<PaymentData[]>([]);
   const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
   const [showEditSurveyPopup, setShowEditSurveyPopup] = useState(false);
   const [showViewSurveyPopup, setShowViewSurveyPopup] = useState(false);
@@ -50,14 +48,9 @@ function App() {
     setSurveysData(response);
   };
 
-  const fetchPayments = async () => {
-    const response = await getAllPayments();
-    setPaymentsData(response);
-  };
 
   useEffect(() => {
     fetchSurveys();
-    fetchPayments();
   }, []);
 
   const handlePlusButtonClick = () => {
@@ -128,14 +121,6 @@ function App() {
     (survey) => survey.id === selectedSurveyToEditID
   );
 
-  const handleDeletePaymentClick = () => {
-    console.log('delete payment');
-  };
-
-  const handleEditPaymentClick = () => {
-    console.log('delete payment');
-  };
-
   return (
     <>
       <NavBar />
@@ -170,9 +155,7 @@ function App() {
             <Route
               element={
                 <Payments
-                  payments={paymentsData}
-                  onDeletePaymentClick={handleDeletePaymentClick}
-                  onEditPaymentClick={handleEditPaymentClick}
+                  surveys={surveysData}
                 />
               }
               path="/payments"

@@ -1,21 +1,19 @@
 import './Payments.css';
 import PaymentsList from '../components/PaymentsList';
 
-import { PaymentData } from '../types/types';
+import { SurveyData } from '../types/types';
 
 interface PaymentsProps {
-  payments: PaymentData[];
-  onEditPaymentClick: (paymentID: number) => void;
-  onDeletePaymentClick: (paymentID: number) => void;
+  surveys: SurveyData[];
 }
 
-const Payments = ({ payments, onEditPaymentClick, onDeletePaymentClick }: PaymentsProps) => {
+const Payments = ({
+  surveys,
+}: PaymentsProps) => {
   return (
     <>
       <PaymentsList
-        payments={payments}
-        onDeletePaymentClick={onDeletePaymentClick}
-        onEditPaymentClick={onEditPaymentClick}
+        surveys={surveys}
       />
     </>
   );

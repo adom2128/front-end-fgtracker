@@ -47,7 +47,7 @@ const Survey = ({
             <Col> {selectedSurveyData.stage}</Col>
           </Row>
           <Row>
-            <Col className="titles">Date Focus Group Completed:</Col>
+            <Col className="titles">Date FG Completed:</Col>
             <Col> {selectedSurveyData.dateFGCompleted}</Col>
           </Row>
 
@@ -60,8 +60,20 @@ const Survey = ({
             <Col>${selectedSurveyData.paymentLeft}</Col>
           </Row>
           <Row>
-            <Col className="titles">Payment Expiration Date:</Col>
-            <Col>{selectedSurveyData.paymentExpirationDate}</Col>
+            <Col className="titles">Payment Last Four Digits:</Col>
+            <Col>{selectedSurveyData.lastFour}</Col>
+          </Row>
+          <Row>
+            <Col className="titles">Payment Link:</Col>
+            <Col>
+              <a
+                href={selectedSurveyData.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Here
+              </a>
+            </Col>
           </Row>
 
           <Row>

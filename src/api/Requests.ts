@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { SurveyData } from '../types/types';
-import { convertFromApi, convertPaymentFromApi } from '../helpers';
+import { convertFromApi } from '../helpers';
 
 const baseUrl = 'http://127.0.0.1:5000';
 // const baseUrl = 'https://back-end-fgtracker.onrender.com'
@@ -48,11 +48,3 @@ export const deleteSurvey = async (surveyID: number) => {
   }
 };
 
-export const getAllPayments = async () => {
-  try {
-    const response = await axios.get(`${baseUrl}/payments`);
-    return response.data.map(convertPaymentFromApi);
-  } catch (error) {
-    console.log(error);
-  }
-};

@@ -1,38 +1,34 @@
-import { PaymentData } from '../types/types';
-import { Table } from 'react-bootstrap';
+import { SurveyData } from '../types/types';
+import { Row, Col } from 'react-bootstrap';
+import PaymentCard from './PaymentCard';
+import './PaymentsList.css';
 
 interface PaymentsListProps {
-  payments: PaymentData[];
-  onEditPaymentClick: (paymentID: number) => void;
-  onDeletePaymentClick: (paymentID: number) => void;
+  surveys: SurveyData[];
 }
 
 const PaymentsList = ({
-  payments,
-  onDeletePaymentClick,
-  onEditPaymentClick,
+  surveys,
 }: PaymentsListProps) => {
   return (
-    <>
-      <div className="table-responsive payment-table">
-        <Table hover>
-          <thead>
-            <tr>
-              <th>Last Four Digits</th>
-              <th>Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payments?.map((payment) => (
-              <tr key={payment.paymentId}>
-                <td>{payment.lastFour}</td>
-                <td>{payment.link}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-    </>
+    <div className="payments-container">
+      <Row xs={1} sm={2} lg={3} xl={3} className="g-2">
+        {surveys
+          ?.filter(
+            (survey) => survey.stage === 'Completed' && survey.paymentLeft! > 0
+          )
+          ?.map((survey) => (
+            <Col key={survey.id}>
+              <PaymentCard
+                paymentLeft={survey.paymentLeft!}
+                paymentExpiration={survey.paymentExpirationDate!}
+                lastFour={survey.lastFour!}
+                link={survey.link!}
+              />
+            </Col>
+          ))}
+      </Row>
+    </div>
   );
 };
 
