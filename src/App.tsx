@@ -43,7 +43,7 @@ function App() {
     number | null
   >(null);
 
-  const fetchSurveys = async () => {;
+  const fetchSurveys = async () => {
     const response = await getAllSurveys();
     setSurveysData(response);
   };
@@ -121,71 +121,75 @@ function App() {
   );
 
   return (
-    <Container fluid="xl">
+    <>
       <NavBar />
-      <Routes>
-        <Route element={<Login />} path="/" />
-        <Route element={<FourOhFour />} path="*" />
-        <Route element={<PrivateRoute />}>
-          <Route element={<Home surveys={surveysData} />} path="/home" />
-          <Route
-            element={
-              <Dashboard
-                surveys={surveysData}
-                onDeleteSurveyClick={handleDeleteSurveyClick}
-                onEditSurveyClick={handleEditSurveyClick}
-                onViewSurveyClick={handleViewSurveyClick}
-              />
-            }
-            path="/dashboard"
-          />
-          <Route
-            element={
-              <Completed
-                surveys={surveysData}
-                onDeleteSurveyClick={handleDeleteSurveyClick}
-                onEditSurveyClick={handleEditSurveyClick}
-                onViewSurveyClick={handleViewSurveyClick}
-              />
-            }
-            path="/completed"
-          />
-          <Route element={<Payments />} path="/payments" />
-        </Route>
-      </Routes>
-      <PlusButton onClick={handlePlusButtonClick} />
+      <Container className="app-home-container">
+        <Routes>
+          <Route element={<Login />} path="/" />
+          <Route element={<FourOhFour />} path="*" />
+          <Route element={<PrivateRoute />}>
+            <Route element={<Home surveys={surveysData} />} path="/home" />
+            <Route
+              element={
+                <Dashboard
+                  surveys={surveysData}
+                  onDeleteSurveyClick={handleDeleteSurveyClick}
+                  onEditSurveyClick={handleEditSurveyClick}
+                  onViewSurveyClick={handleViewSurveyClick}
+                />
+              }
+              path="/dashboard"
+            />
+            <Route
+              element={
+                <Completed
+                  surveys={surveysData}
+                  onDeleteSurveyClick={handleDeleteSurveyClick}
+                  onEditSurveyClick={handleEditSurveyClick}
+                  onViewSurveyClick={handleViewSurveyClick}
+                />
+              }
+              path="/completed"
+            />
+            <Route element={<Payments />} path="/payments" />
+          </Route>
+        </Routes>
+        <PlusButton onClick={handlePlusButtonClick} />
 
-      <AddSurveyPopUp
-        show={showAddSurveyPopup}
-        onCancel={handleAddSurveyPopupClose}
-        onSaveClick={handleAddSurveyPopupSave}
-      />
-      {selectedSurveyToViewID !== null && (
-        <Survey
-          selectedSurveyData={
-            surveysData.find((survey) => survey.id === selectedSurveyToViewID)!
-          }
-          show={showViewSurveyPopup}
-          onCancel={handleCloseSurvey}
-          onEdit={handleEditSurvey}
+        <AddSurveyPopUp
+          show={showAddSurveyPopup}
+          onCancel={handleAddSurveyPopupClose}
+          onSaveClick={handleAddSurveyPopupSave}
         />
-      )}
+        {selectedSurveyToViewID !== null && (
+          <Survey
+            selectedSurveyData={
+              surveysData.find(
+                (survey) => survey.id === selectedSurveyToViewID
+              )!
+            }
+            show={showViewSurveyPopup}
+            onCancel={handleCloseSurvey}
+            onEdit={handleEditSurvey}
+          />
+        )}
 
-      {selectedSurveyData && (
-        <EditSurvey
-          selectedSurveyData={selectedSurveyData}
-          show={showEditSurveyPopup}
-          onCancel={handleEditSurveyPopupClose}
-          onSaveClick={handleEditSurveyPopupSave}
+        {selectedSurveyData && (
+          <EditSurvey
+            selectedSurveyData={selectedSurveyData}
+            show={showEditSurveyPopup}
+            onCancel={handleEditSurveyPopupClose}
+            onSaveClick={handleEditSurveyPopupSave}
+          />
+        )}
+        <DeleteModal
+          show={showDeleteModal}
+          onHide={hideDeleteModal}
+          onConfirmDelete={handleConfirmDeleteSurvey}
         />
-      )}
-      <DeleteModal
-        show={showDeleteModal}
-        onHide={hideDeleteModal}
-        onConfirmDelete={handleConfirmDeleteSurvey}
-      />
-      <Footer />
-    </Container>
+        <Footer />
+      </Container>
+    </>
   );
 }
 

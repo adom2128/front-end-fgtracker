@@ -27,8 +27,8 @@ const Home = ({ surveys }: HomeProps) => {
   return (
     <div className="home-container">
       <Row>
-        <p></p>
-        <p>
+        <p className="home-text"></p>
+        <p className="home-text">
           It's been 6 months since you participated in a focus group from one of
           these companies, apply now:
         </p>

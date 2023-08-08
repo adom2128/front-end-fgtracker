@@ -3,12 +3,15 @@ a {
 }
 
 .footer {
-  background-color: #657b6b61;
+  background-color: #b8c3bb;
   color: black !important;
-  height: 80px;
+  height: 70px;
   display: flex;
   align-items: center;
-  padding: 0px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .icon-container {
