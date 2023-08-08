@@ -1,10 +1,23 @@
 import './Payments.css';
+import PaymentsList from '../components/PaymentsList';
 
-const Payments = () => {
+import { PaymentData } from '../types/types';
+
+interface PaymentsProps {
+  payments: PaymentData[];
+  onEditPaymentClick: (paymentID: number) => void;
+  onDeletePaymentClick: (paymentID: number) => void;
+}
+
+const Payments = ({ payments, onEditPaymentClick, onDeletePaymentClick }: PaymentsProps) => {
   return (
-    <div className="payments-container">
-      <h1>hello from payments</h1>
-    </div>
+    <>
+      <PaymentsList
+        payments={payments}
+        onDeletePaymentClick={onDeletePaymentClick}
+        onEditPaymentClick={onEditPaymentClick}
+      />
+    </>
   );
 };
 

@@ -25,3 +25,15 @@ export interface ApiSurveyData {
   id: number;
   topic: string;
 }
+
+export interface ApiPaymentData {
+  payment_id: number;
+  last_four: string;
+  link: string;
+}
+
+export interface PaymentData {
+  paymentId: number;
+  lastFour: string;
+  link: string;
+}

@@ -1,4 +1,9 @@
-import { ApiSurveyData, SurveyData } from './types/types';
+import {
+  ApiSurveyData,
+  SurveyData,
+  ApiPaymentData,
+  PaymentData,
+} from './types/types';
 import { format } from 'date-fns';
 
 export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
@@ -78,3 +83,14 @@ export const findCompanyLink = (company: string) => {
   return companyLinks[company];
 };
 
+export const convertPaymentFromApi = (
+  apiPayment: ApiPaymentData
+): PaymentData => {
+  const { payment_id, last_four, link } = apiPayment;
+
+  return {
+    paymentId: payment_id,
+    lastFour: last_four,
+    link,
+  };
+};
