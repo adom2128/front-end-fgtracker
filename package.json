@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://adom2128.github.io/fgtracker",
+  "homepage": "https://adom2128.github.io/front-end-fgtracker/home",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.2.0",
