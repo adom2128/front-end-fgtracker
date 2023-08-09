@@ -16,7 +16,7 @@ root.render(
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: 'https://adom2128.github.io/front-end-fgtracker/',
+        redirect_uri: window.location.href,
       }}
     >
       <HashRouter>
