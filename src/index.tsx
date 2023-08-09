@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
 
@@ -16,7 +16,7 @@ root.render(
       domain={domain}
       clientId={clientId}
       authorizationParams={{
-        redirect_uri: 'https://adom2128.github.io/front-end-fgtracker/',
+        redirect_uri: window.location.origin,
       }}
     >
       <HashRouter>

@@ -3,6 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
 import {
   getAllSurveys,
@@ -28,6 +29,7 @@ import Footer from './components/Footer';
 import './App.css';
 
 function App() {
+  const { isAuthenticated } = useAuth0();
   const [surveysData, setSurveysData] = useState<SurveyData[]>([]);
   const [showAddSurveyPopup, setShowAddSurveyPopup] = useState(false);
   const [showEditSurveyPopup, setShowEditSurveyPopup] = useState(false);
@@ -47,7 +49,6 @@ function App() {
     const response = await getAllSurveys();
     setSurveysData(response);
   };
-
 
   useEffect(() => {
     fetchSurveys();
@@ -153,16 +154,12 @@ function App() {
               path="/completed"
             />
             <Route
-              element={
-                <Payments
-                  surveys={surveysData}
-                />
-              }
+              element={<Payments surveys={surveysData} />}
               path="/payments"
             />
           </Route>
         </Routes>
-        <PlusButton onClick={handlePlusButtonClick} />
+        {isAuthenticated && <PlusButton onClick={handlePlusButtonClick} />}
 
         <AddSurveyPopUp
           show={showAddSurveyPopup}
