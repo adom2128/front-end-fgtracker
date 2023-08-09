@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
+import 'regenerator-runtime/runtime';
+import axios from 'axios';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

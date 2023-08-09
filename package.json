@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://adom2128.github.io/fgtracker",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.2.0",
@@ -36,7 +37,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +61,8 @@
   },
   "devDependencies": {
     "@types/react-table": "^7.7.14",
+    "gh-pages": "^5.0.0",
+    "parcel-bundler": "1.12.5",
     "react-table": "^7.8.0"
   }
 }
