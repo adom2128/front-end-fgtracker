@@ -19,9 +19,9 @@ root.render(
         redirect_uri: 'https://adom2128.github.io/front-end-fgtracker/',
       }}
     >
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </Auth0Provider>
   </React.StrictMode>
 );
