@@ -40,7 +40,7 @@ const Home = ({ surveys }: HomeProps) => {
           these companies, apply now:
         </p>
       </Row>
-      <Row xs={1} sm={2} lg={3} xl={4} className="g-3">
+      <Row xs={1} sm={2} lg={3} xl={3} className="g-3">
         {filteredSurveys.map((survey) => (
           <Col key={survey.id}>
             <CompanyCard company={survey.company} />
