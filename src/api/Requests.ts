@@ -2,8 +2,8 @@ import axios from 'axios';
 import { SurveyData } from '../types/types';
 import { convertFromApi } from '../helpers';
 
-const baseUrl = 'http://127.0.0.1:5000';
-// const baseUrl = 'https://back-end-fgtracker.onrender.com'
+// const baseUrl = 'http://127.0.0.1:5000';
+const baseUrl = 'https://back-end-fgtracker.onrender.com';
 
 export const getAllSurveys = async () => {
   try {
@@ -47,4 +47,3 @@ export const deleteSurvey = async (surveyID: number) => {
     console.log(error);
   }
 };
-

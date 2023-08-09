@@ -223,7 +223,7 @@ const EditSurvey = ({
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Payment Left</Form.Label>
+                    <Form.Label>Balance</Form.Label>
                     <Form.Control
                       ref={paymentLeftRef}
                       defaultValue={selectedSurveyData.paymentLeft}

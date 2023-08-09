@@ -56,7 +56,7 @@ const Survey = ({
             <Col>{formatBoolean(selectedSurveyData.paymentReceived)}</Col>
           </Row>
           <Row>
-            <Col className="titles">Payment Left: </Col>
+            <Col className="titles">Balance: </Col>
             <Col>${selectedSurveyData.paymentLeft}</Col>
           </Row>
           <Row>

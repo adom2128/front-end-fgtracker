@@ -28,7 +28,7 @@ const CompletedSurveyList = ({
               <th>Payment</th>
               <th>Date Participated</th>
               <th>Payment Received</th>
-              <th>Payment Left</th>
+              <th>Balance</th>
               <th>Payment Expiration Date</th>
               <th></th>
             </tr>
