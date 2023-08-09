@@ -8,7 +8,11 @@ const LogoutButton = () => {
     <button
       className="logout-button btn-primary"
       onClick={() =>
-        logout({ logoutParams: { returnTo: window.location.origin } })
+        logout({
+          logoutParams: {
+            returnTo: 'https://adom2128.github.io/front-end-fgtracker/',
+          },
+        })
       }
     >
       Log Out
