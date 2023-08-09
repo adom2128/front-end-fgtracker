@@ -18,11 +18,18 @@ function isOverSixMonthsAgo(date: Date) {
 }
 
 const Home = ({ surveys }: HomeProps) => {
-  const filteredSurveys = surveys.filter(
-    (survey) =>
-      !survey.dateFGCompleted ||
-      isOverSixMonthsAgo(new Date(survey.dateFGCompleted))
-  );
+  const uniqueCompanies = new Set<string>(); // Use a Set to keep track of unique companies
+  const filteredSurveys = surveys.filter((survey) => {
+    if (
+      (!survey.dateFGCompleted ||
+        isOverSixMonthsAgo(new Date(survey.dateFGCompleted))) &&
+      !uniqueCompanies.has(survey.company) // Check if company is not already in the Set
+    ) {
+      uniqueCompanies.add(survey.company); // Add the company to the Set
+      return true; // Include this survey in the filtered list
+    }
+    return false; // Exclude this survey from the filtered list
+  });
 
   return (
     <div className="home-container">

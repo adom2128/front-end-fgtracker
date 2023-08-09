@@ -34,17 +34,15 @@ p {
   border-color: black;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .button:hover {
-  background-color: #243d21!important;
+  background-color: #243d21 !important;
   color: white !important;
 }
 
 .button:active {
-    background-color: #243d21!important;
-    color: white !important;
+  background-color: #243d21 !important;
+  color: white !important;
 }
-
-
-
