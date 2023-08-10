@@ -1,4 +1,9 @@
 .payments-container {
   background-color: white;
-  min-height: 605px;
+  min-height: 610px;
+}
+
+.payment-total {
+  color: black;
+  margin-top: 100px;
 }

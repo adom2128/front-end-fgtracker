@@ -87,6 +87,7 @@ export const findCompanyLink = (company: string) => {
       'https://www.facebook.com/FieldworkSchaumburg',
     'Fieldwork Dallas': 'https://www.facebook.com/fieldworkdallas',
     'Schlessinger Group': 'https://www.focusgroup.com/Offerwall/Surveys',
+    'Opinions for Cash': 'https://www.facebook.com/Opinionsforcashllc',
   };
   const companyLinks: { [key: string]: string } =
     companyFocusGroupApplicationLinks;
@@ -98,8 +99,7 @@ export const formatExpDate = (date: string | null) => {
     return null;
   }
 
-  const dateString = '23 November, 2020';
-  const formattedDate = dateString.replace(
+  const formattedDate = date.replace(
     /(\d+)(?:st|nd|rd|th)? ([A-Za-z]+), (\d+)/,
     '$1 $2 $3'
   );
@@ -108,4 +108,15 @@ export const formatExpDate = (date: string | null) => {
   const year = dateObject.getFullYear();
   const month = String(dateObject.getMonth() + 1).padStart(2, '0');
   return `${month}/${year}`;
+};
+
+export const calculateTotalBalance = (surveys: SurveyData[]) => {
+  let totalBalance = 0;
+  for (const survey of surveys) {
+    if (survey.paymentLeft) {
+      totalBalance += survey.paymentLeft
+    }
+
+  }
+  return totalBalance;
 };

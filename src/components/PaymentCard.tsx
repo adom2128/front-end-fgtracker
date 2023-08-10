@@ -1,4 +1,4 @@
-import { Card, Stack, Row, Col } from 'react-bootstrap';
+import { Card, Stack } from 'react-bootstrap';
 import { formatExpDate } from '../helpers';
 import './PaymentCard.css';
 
@@ -17,20 +17,18 @@ const PaymentCard = ({
 }: PaymentCardProps) => {
   return (
     <Card className="payment-card card-space">
-      <Card.Body>
-        <Stack>
-          <Row>
+      <Card.Body className="card-body-customization">
+          <div className="payment-card-details">
             <a href={link} target="_blank" rel="noreferrer">
               Details
             </a>
-          </Row>
+          </div>
 
-          <Row className="payment-left">${paymentLeft}</Row>
-          <Row>
-            <Col>...{lastFour}</Col>
-            <Col>Exp: {formatExpDate(paymentExpiration)}</Col>
-          </Row>
-        </Stack>
+          <div className="payment-left">${paymentLeft}</div>
+          <div className="payment-card-footer">
+            <span className="left-text">...{lastFour}</span>
+            <span className="right-text">Exp: {formatExpDate(paymentExpiration)}</span>
+          </div>
       </Card.Body>
     </Card>
   );

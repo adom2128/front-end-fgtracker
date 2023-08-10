@@ -1,5 +1,6 @@
-.result-tables {
-  min-height: 605px;
+.result-table {
+  min-height: 100%;
   border: 20px solid white;
   background-color: white;
+  margin-top: 90px;
 }
