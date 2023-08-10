@@ -6,3 +6,20 @@
 .home-text {
   width: 80%;
 }
+
+.survey-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.survey-list-item:hover {
+  background-color: #e9ecef;
+  transition: background-color 0.2s ease;
+}

@@ -1,5 +1,5 @@
 import { SurveyData } from '../types/types';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, ListGroupItem, ListGroup } from 'react-bootstrap';
 import CompanyCard from '../components/CompanyCard';
 import './Home.css';
 
@@ -40,13 +40,17 @@ const Home = ({ surveys }: HomeProps) => {
           these companies, apply now:
         </p>
       </Row>
-      <Row xs={1} sm={2} lg={3} xl={3} className="g-3">
+      {/* <Row xs={1} sm={2} lg={3} xl={3} className="g-3"> */}
+      <ListGroup>
         {filteredSurveys.map((survey) => (
-          <Col key={survey.id}>
+          // <Col >
+          <ListGroupItem key={survey.id} className="survey-list-item">
             <CompanyCard company={survey.company} />
-          </Col>
+            {/* // </Col> */}
+          </ListGroupItem>
         ))}
-      </Row>
+        {/* </Row> */}
+      </ListGroup>
     </div>
   );
 };

@@ -76,6 +76,17 @@ export const findCompanyLink = (company: string) => {
     'Fieldwork Denver': 'https://www.facebook.com/FieldworkDenver',
     'Probe Research': 'https://www.facebook.com/probemarketresearch',
     'Winn Winn Research': 'https://www.facebook.com/panelparticipants',
+    'Ascendancy Research': 'https://www.facebook.com/AscendancyResearch',
+    'Q-Insights': 'https://respondent.q-insights.com/portal/default',
+    'Assistance in Marketing': 'https://www.facebook.com/aimhackensack',
+    Ipsos: 'https://www.ipsosisay.com/en-us/user/login',
+    'Contact Design': 'https://www.facebook.com/yourcontacthub',
+    'Clarosicion Research and Marketing':
+      'https://crmfirm.com/marketresearch/current-studies/',
+    'Fieldwork Chicago-Schaumburg':
+      'https://www.facebook.com/FieldworkSchaumburg',
+    'Fieldwork Dallas': 'https://www.facebook.com/fieldworkdallas',
+    'Schlessinger Group': 'https://www.focusgroup.com/Offerwall/Surveys',
   };
   const companyLinks: { [key: string]: string } =
     companyFocusGroupApplicationLinks;
