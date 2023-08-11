@@ -11,7 +11,7 @@ const PaymentsList = ({
   surveys,
 }: PaymentsListProps) => {
   return (
-    <div className="payments-container">
+    <div className="payment-card-container">
       <Row xs={1} sm={2} lg={3} xl={3} className="g-2">
         {surveys
           ?.filter(

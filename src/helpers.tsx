@@ -87,6 +87,7 @@ export const findCompanyLink = (company: string) => {
       'https://www.facebook.com/FieldworkSchaumburg',
     'Fieldwork Dallas': 'https://www.facebook.com/fieldworkdallas',
     'Schlessinger Group': 'https://www.focusgroup.com/Offerwall/Surveys',
+    Sago: 'https://www.focusgroup.com/Offerwall/Surveys',
     'Opinions for Cash': 'https://www.facebook.com/Opinionsforcashllc',
   };
   const companyLinks: { [key: string]: string } =
@@ -114,9 +115,8 @@ export const calculateTotalBalance = (surveys: SurveyData[]) => {
   let totalBalance = 0;
   for (const survey of surveys) {
     if (survey.paymentLeft) {
-      totalBalance += survey.paymentLeft
+      totalBalance += survey.paymentLeft;
     }
-
   }
-  return totalBalance;
+  return totalBalance.toFixed(2);
 };

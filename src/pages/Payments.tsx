@@ -11,8 +11,8 @@ const Payments = ({ surveys }: PaymentsProps) => {
   return (
     <>
       <div className="payments-container">
-        <span className="payment-total">
-          <p>Total Available Balance: {calculateTotalBalance(surveys)}</p>
+        <span >
+          <p className="payment-total">Total Available Balance: ${calculateTotalBalance(surveys)}</p>
         </span>
         <PaymentsList surveys={surveys} />
       </div>

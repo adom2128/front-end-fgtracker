@@ -1,12 +1,8 @@
-
-
 .payment-card-details {
   display: flex;
   justify-content: center;
 }
 
-.payments-container {
-  background-color: white;
-  min-height: 615px;
-  padding: 0px;
+.payment-card-container {
+  margin-top:auto;
 }

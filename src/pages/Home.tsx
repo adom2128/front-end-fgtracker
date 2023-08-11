@@ -40,14 +40,14 @@ const Home = ({ surveys }: HomeProps) => {
         </p>
       </Row>
       <div className="company-card-area">
-      <Row xs={1} sm={2} lg={3} xl={3} className="g-3">
+        <Row xs={1} sm={2} lg={3} xl={3} className="g-3">
           {filteredSurveys.map((survey) => (
-            <Col>
-                <CompanyCard company={survey.company} />
+            <Col key={survey.id}>
+              <CompanyCard company={survey.company} />
             </Col>
           ))}
-      </Row></div>
-      
+        </Row>
+      </div>
     </div>
   );
 };
