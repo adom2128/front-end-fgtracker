@@ -35,8 +35,7 @@ const Home = ({ surveys }: HomeProps) => {
     <div className="home-container">
       <Row className="top-row">
         <p className="home-text">
-          It's been 6 months since you participated in a focus group from one of
-          these companies, apply now:
+          Looking for more focus groups to participate in? Apply below!
         </p>
       </Row>
       <div className="company-card-area">

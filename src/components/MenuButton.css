@@ -1,24 +1,21 @@
 .dropdown-btn {
-  border: none;
-  color: black;
+  border: none !important;
+  color: black !important;
   background-color: #98ada4 !important;
 }
 
-.dropdown-btn:active {
-  background-color: #243d21!important;
-  color: white !important;
-}
-
-.dropdown-btn:focus {
-  background-color: #243d21!important;
-  color: white !important;
-}
-
+.dropdown-btn:active,
+.dropdown-btn:focus,
 .dropdown-btn:hover {
-  background-color: #243d21!important;
+  background-color: #243d21 !important;
   color: white !important;
 }
 
 .dropdown-toggle::after {
-  content: none;
+  content: none !important;
+}
+
+a.dropdown-item:active {
+  background-color: #243d21 !important;
+  color: white !important;
 }

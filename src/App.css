@@ -4,9 +4,9 @@ body {
 }
 
 .btn-primary {
-  background-color: #98ada4;
-  color: black;
-  border: none;
+  background-color: #98ada4 !important;
+  color: black !important;
+  border: none !important;
 }
 
 .btn-primary:hover {
