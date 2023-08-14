@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# FGTracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Capstone project for Ada Developers Academy - Cohort 19.
 
-## Available Scripts
+## Project Description & Links
 
-In the project directory, you can run:
+**Repository Links**
+[Front End](https://github.com/adom2128/front-end-fgtracker)
+[Back End](https://github.com/adom2128/back-end-fgtracker)
+[Chrome Extension](https://github.com/adom2128/extension-fgtracker)
+[Email Script](https://github.com/adom2128/email-script-fgtracker)
 
-### `yarn start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgtracker/#/home).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `yarn test`
+- User authentication with Auth0
+- Display all survey entries as well as those that resulted in completed focus group participation
+- Add, edit, view, and delete survey entries
+- View payments with available balances, with links to digital gift card
+- Gift card balances automatically updated using an email checking script
+- Chrome extension to conveniently add survey entries to database
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `yarn build`
+**Back End**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Python
+- Flask
+- SQLAlchemy
+- postgreSQL
+- Axios
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Front End**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Typescript
+- React
+  - Router Dom
+  - Bootstrap
+  - Auth0
+  - Datepicker
 
-### `yarn eject`
+**Extension**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Google Chrome API
+- Webpack
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
