@@ -4,11 +4,14 @@ Capstone project for Ada Developers Academy - Cohort 19.
 
 ## Project Description & Links
 
+FGTracker is designed to simplify the process of managing survey submission and focus group participation. With FGTracker, you can effortlessly keep tabs on the surveys you've submitted, enabling you to gauge your success rates more effectively. Additionally, FGTracker tracks your participation history, ensuring you know exactly when it's appropriate to reapply. The platform also offers insights into payment status, balances, and expiration dates.
+
 **Repository Links**
-[Front End](https://github.com/adom2128/front-end-fgtracker)
-[Back End](https://github.com/adom2128/back-end-fgtracker)
-[Chrome Extension](https://github.com/adom2128/extension-fgtracker)
-[Email Script](https://github.com/adom2128/email-script-fgtracker)
+
+- [Front End](https://github.com/adom2128/front-end-fgtracker)
+- [Back End](https://github.com/adom2128/back-end-fgtracker)
+- [Chrome Extension](https://github.com/adom2128/extension-fgtracker)
+- [Email Script](https://github.com/adom2128/email-script-fgtracker)
 
 ## Demo
 
@@ -36,11 +39,7 @@ FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgt
 **Front End**
 
 - Typescript
-- React
-  - Router Dom
-  - Bootstrap
-  - Auth0
-  - Datepicker
+- React - Router Dom, Bootstrap, Auth0, Datepicker
 
 **Extension**
 
@@ -48,3 +47,5 @@ FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgt
 - Webpack
 
 ## Contact
+
+Alejandra Dominguez - adom2128@gmail.com
