@@ -1,8 +1,8 @@
-import { SurveyData } from '../types/types';
-import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';
 import './CompletedSurveyList.css';
 import { formatBoolean } from '../helpers';
+import { SurveyData } from '../types/types';
+import MenuButton from './MenuButton';
 
 interface CompletedSurveyListProps {
   surveys: SurveyData[];

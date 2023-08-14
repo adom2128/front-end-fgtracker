@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import Profile from './Profile';
 import './NavBar.css';
+import Profile from './Profile';
 
 const NavBar = () => {
   return (

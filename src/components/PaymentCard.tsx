@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap';
-import { formatExpDate } from '../helpers';
 import './PaymentCard.css';
+import { formatExpDate } from '../helpers';
 
 interface PaymentCardProps {
   paymentLeft: number;

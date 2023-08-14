@@ -1,5 +1,5 @@
-import { ApiSurveyData, SurveyData } from './types/types';
 import { format } from 'date-fns';
+import { ApiSurveyData, SurveyData } from './types/types';
 
 export const convertFromApi = (apiSurvey: ApiSurveyData): SurveyData => {
   const {

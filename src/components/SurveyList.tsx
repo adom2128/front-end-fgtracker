@@ -1,7 +1,7 @@
-import { SurveyData } from '../types/types';
-import MenuButton from './MenuButton';
 import { Table } from 'react-bootstrap';
 import './SurveyList.css';
+import { SurveyData } from '../types/types';
+import MenuButton from './MenuButton';
 
 interface SurveyListProps {
   surveys: SurveyData[];

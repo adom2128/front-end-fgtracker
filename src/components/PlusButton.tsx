@@ -1,6 +1,6 @@
-import './PlusButton.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import './PlusButton.css';
 
 interface PlusButtonProps {
   onClick: () => void;

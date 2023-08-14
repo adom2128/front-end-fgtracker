@@ -1,7 +1,7 @@
 import { useRef, FormEvent, useState, useEffect } from 'react';
 import { Form, Row, Col, Stack, Button, Modal, Alert } from 'react-bootstrap';
-import { SurveyData } from '../types/types';
 import DatePicker from 'react-datepicker';
+import { SurveyData } from '../types/types';
 import { formatDate } from '../helpers';
 
 interface EditSurveyPopUpProps {

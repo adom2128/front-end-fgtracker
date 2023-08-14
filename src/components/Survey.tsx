@@ -1,7 +1,7 @@
 import { Modal, Button, Stack, Row, Col } from 'react-bootstrap';
+import './Survey.css';
 import { SurveyData } from '../types/types';
 import { formatBoolean } from '../helpers';
-import './Survey.css';
 
 interface SurveyProps {
   show: boolean;

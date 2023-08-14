@@ -1,6 +1,6 @@
+import './Dashboard.css';
 import SurveyList from '../components/SurveyList';
 import { SurveyData } from '../types/types';
-import './Dashboard.css'
 
 interface DashboardProps {
   surveys: SurveyData[];
@@ -9,7 +9,12 @@ interface DashboardProps {
   onViewSurveyClick: (surveyID: number) => void;
 }
 
-const Dashboard = ({ surveys, onEditSurveyClick, onDeleteSurveyClick, onViewSurveyClick }: DashboardProps) => {
+const Dashboard = ({
+  surveys,
+  onEditSurveyClick,
+  onDeleteSurveyClick,
+  onViewSurveyClick,
+}: DashboardProps) => {
   return (
     <>
       <SurveyList

@@ -1,10 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-datepicker/dist/react-datepicker.css';
-import '@fortawesome/fontawesome-free/css/all.css';
 import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-datepicker/dist/react-datepicker.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import {
   getAllSurveys,
   postSurvey,
@@ -26,7 +27,6 @@ import Survey from './components/Survey';
 import Login from './pages/Login';
 import Payments from './pages/Payments';
 import Footer from './components/Footer';
-import './App.css';
 
 function App() {
   const { isAuthenticated } = useAuth0();

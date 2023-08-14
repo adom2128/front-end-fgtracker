@@ -1,15 +1,13 @@
-import { SurveyData } from '../types/types';
 import { Row, Col } from 'react-bootstrap';
-import PaymentCard from './PaymentCard';
 import './PaymentsList.css';
+import PaymentCard from './PaymentCard';
+import { SurveyData } from '../types/types';
 
 interface PaymentsListProps {
   surveys: SurveyData[];
 }
 
-const PaymentsList = ({
-  surveys,
-}: PaymentsListProps) => {
+const PaymentsList = ({ surveys }: PaymentsListProps) => {
   return (
     <div className="payment-card-container">
       <Row xs={1} sm={2} lg={3} xl={3} className="g-2">

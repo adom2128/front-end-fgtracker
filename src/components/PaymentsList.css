@@ -1,8 +1,8 @@
+.payment-card-container {
+  margin-top:auto;
+}
+
 .payment-card-details {
   display: flex;
   justify-content: center;
-}
-
-.payment-card-container {
-  margin-top:auto;
 }

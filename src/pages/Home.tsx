@@ -1,7 +1,7 @@
-import { SurveyData } from '../types/types';
 import { Row, Col } from 'react-bootstrap';
-import CompanyCard from '../components/CompanyCard';
 import './Home.css';
+import { SurveyData } from '../types/types';
+import CompanyCard from '../components/CompanyCard';
 
 interface HomeProps {
   surveys: SurveyData[];
@@ -18,17 +18,17 @@ function isOverSixMonthsAgo(date: Date) {
 }
 
 const Home = ({ surveys }: HomeProps) => {
-  const uniqueCompanies = new Set<string>(); // Use a Set to keep track of unique companies
+  const uniqueCompanies = new Set<string>();
   const filteredSurveys = surveys.filter((survey) => {
     if (
       (!survey.dateFGCompleted ||
         isOverSixMonthsAgo(new Date(survey.dateFGCompleted))) &&
-      !uniqueCompanies.has(survey.company) // Check if company is not already in the Set
+      !uniqueCompanies.has(survey.company)
     ) {
-      uniqueCompanies.add(survey.company); // Add the company to the Set
-      return true; // Include this survey in the filtered list
+      uniqueCompanies.add(survey.company);
+      return true;
     }
-    return false; // Exclude this survey from the filtered list
+    return false;
   });
 
   return (

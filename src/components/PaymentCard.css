@@ -2,6 +2,10 @@
   padding: 5px;
 }
 
+.left-text {
+  align-self: flex-start;
+}
+
 .payment-card {
   transition: transform ease-in-out 100ms, box-shadow ease-in-out 100ms;
   height: 14rem;
@@ -16,18 +20,18 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+.payment-card:hover,
+.payment-card:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .payment-card-footer {
   display: flex;
   justify-content: space-around;
   margin-top: 3rem;
   font-size: 0.9rem;
   color: #555;
-}
-
-.payment-card:hover,
-.payment-card:focus {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .payment-left {
@@ -37,9 +41,6 @@
   margin-top: 30px;
 }
 
-.left-text {
-  align-self: flex-start; /* Aligns this item to the left */
-}
 .right-text {
-  align-self: flex-end; /* Aligns this item to the right */
+  align-self: flex-end;
 }
