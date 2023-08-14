@@ -1,4 +1,4 @@
-import { Card, Stack } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { formatExpDate } from '../helpers';
 import './PaymentCard.css';
 
