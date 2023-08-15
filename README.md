@@ -53,7 +53,6 @@ FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgt
 **Front-End**
 
 <pre>
-```
     "@auth0/auth0-react": "^2.2.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -81,13 +80,11 @@ FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgt
     "react-scripts": "5.0.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
-```
 </pre>
 
 **Back-End**
 
 <pre>
-```
 alembic==1.5.4
 attrs==21.2.0
 autopep8==1.5.5
@@ -121,17 +118,14 @@ SQLAlchemy==1.3.23
 toml==0.10.2
 urllib3==1.26.4
 Werkzeug==1.0.1
-```
 </pre>
 
 **Chrome extension**
 
 <pre>
-```
     "copy-webpack-plugin": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-```
 </pre>
 
 ## Contact
