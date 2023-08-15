@@ -4,9 +4,8 @@ Capstone project for Ada Developers Academy - Cohort 19.
 
 ## Project Description & Links
 
-FGTracker is designed to simplify the process of managing survey submission and focus group participation. With FGTracker, you can effortlessly keep tabs on the surveys you've submitted, enabling you to gauge your success rates more effectively. Additionally, FGTracker tracks your participation history, ensuring you know exactly when it's appropriate to reapply. The platform also offers insights into payment status, balances, and expiration dates.
+FGTracker is designed to simplify the process of managing survey submissions and focus group participation. With FGTracker, you can effortlessly keep tabs on the surveys you've submitted, enabling you to gauge your success rates more effectively. Additionally, FGTracker tracks your participation history, ensuring you know exactly when it's appropriate to reapply. The platform also offers insights into payment status, balances, and expiration dates.
 
-![Recorded Demo](https://youtu.be/jAu6PywxjrU)
 
 **Repository Links**
 
@@ -17,16 +16,18 @@ FGTracker is designed to simplify the process of managing survey submission and 
 
 ## Demo
 
-FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgtracker/#/home).
+FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgtracker/#/home)
+
+[Recorded Demo](https://youtu.be/jAu6PywxjrU)
 
 ## Features
 
 - User authentication with Auth0
 - Display all survey entries as well as those that resulted in completed focus group participation
 - Add, edit, view, and delete survey entries
-- View payments with available balances, with links to digital gift card
-- Gift card balances automatically updated using an email checking script
-- Chrome extension to conveniently add survey entries to database
+- View payments with available balances, with links to the digital gift card
+- Gift card balances are automatically updated using an email-checking script
+- Chrome extension to conveniently add survey entries to the database
 
 ## Tech Stack
 
@@ -34,7 +35,7 @@ FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgt
 - Python
 - Flask
 - SQLAlchemy
-- postgreSQL
+- PostgreSQL
 - Axios
 
 
