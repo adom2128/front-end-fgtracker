@@ -31,28 +31,26 @@ FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgt
 ## Tech Stack
 
 **Back-End**
-
 - Python
 - Flask
 - SQLAlchemy
 - postgreSQL
 - Axios
 
-**Front-End**
 
+**Front-End**
 - Typescript
 - React - Router Dom, Bootstrap, Auth0, Datepicker
 
-**Extension**
 
+**Extension**
 - Google Chrome API
 - Webpack
 
 ## Dependencies
 
 **Front-End**
-
-<pre>
+```
     "@auth0/auth0-react": "^2.2.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -80,53 +78,51 @@ FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgt
     "react-scripts": "5.0.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
-</pre>
+```
 
 **Back-End**
-
-<pre>
-alembic==1.5.4
-attrs==21.2.0
-autopep8==1.5.5
-certifi==2020.12.5
-chardet==4.0.0
-click==7.1.2
-Flask==1.1.2
-Flask-Cors==3.0.10
-Flask-Migrate==2.6.0
-Flask-SQLAlchemy==2.4.4
-gunicorn==20.1.0
-idna==2.10
-iniconfig==1.1.1
-itsdangerous==1.1.0
-Jinja2==2.11.3
-Mako==1.1.4
-MarkupSafe==1.1.1
-packaging==20.9
-pluggy==0.13.1
-psycopg2-binary==2.9.5
-py==1.11.0
-pycodestyle==2.6.0
-pyparsing==2.4.7
-pytest==7.1.1
-python-dateutil==2.8.1
-python-dotenv==0.15.0
-python-editor==1.0.4
-requests==2.25.1
-six==1.15.0
-SQLAlchemy==1.3.23
-toml==0.10.2
-urllib3==1.26.4
-Werkzeug==1.0.1
-</pre>
+```
+    alembic==1.5.4
+    attrs==21.2.0
+    autopep8==1.5.5
+    certifi==2020.12.5
+    chardet==4.0.0
+    click==7.1.2
+    Flask==1.1.2
+    Flask-Cors==3.0.10
+    Flask-Migrate==2.6.0
+    Flask-SQLAlchemy==2.4.4
+    gunicorn==20.1.0
+    idna==2.10
+    iniconfig==1.1.1
+    itsdangerous==1.1.0
+    Jinja2==2.11.3
+    Mako==1.1.4
+    MarkupSafe==1.1.1
+    packaging==20.9
+    pluggy==0.13.1
+    psycopg2-binary==2.9.5
+    py==1.11.0
+    pycodestyle==2.6.0
+    pyparsing==2.4.7
+    pytest==7.1.1
+    python-dateutil==2.8.1
+    python-dotenv==0.15.0
+    python-editor==1.0.4
+    requests==2.25.1
+    six==1.15.0
+    SQLAlchemy==1.3.23
+    toml==0.10.2
+    urllib3==1.26.4
+    Werkzeug==1.0.1
+```
 
 **Chrome extension**
-
-<pre>
+```
     "copy-webpack-plugin": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-</pre>
+```
 
 ## Contact
 
