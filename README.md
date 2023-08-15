@@ -6,6 +6,8 @@ Capstone project for Ada Developers Academy - Cohort 19.
 
 FGTracker is designed to simplify the process of managing survey submission and focus group participation. With FGTracker, you can effortlessly keep tabs on the surveys you've submitted, enabling you to gauge your success rates more effectively. Additionally, FGTracker tracks your participation history, ensuring you know exactly when it's appropriate to reapply. The platform also offers insights into payment status, balances, and expiration dates.
 
+![Video Preview](https://youtu.be/jAu6PywxjrU)
+
 **Repository Links**
 
 - [Front End](https://github.com/adom2128/front-end-fgtracker)
