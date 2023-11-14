@@ -3,7 +3,7 @@ import './SurveyList.css';
 import { SurveyData } from '../types/types';
 import MenuButton from './MenuButton';
 
-interface SurveyListProps {
+interface Props {
   surveys: SurveyData[];
   onEditSurveyClick: (surveyID: number) => void;
   onDeleteSurveyClick: (surveyID: number) => void;
@@ -15,7 +15,7 @@ const SurveyList = ({
   onEditSurveyClick,
   onDeleteSurveyClick,
   onViewSurveyClick,
-}: SurveyListProps) => {
+}: Props) => {
   return (
     <>
       <div className="table-responsive survey-table result-tables">

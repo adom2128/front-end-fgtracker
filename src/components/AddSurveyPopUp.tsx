@@ -3,16 +3,12 @@ import { Form, Row, Col, Stack, Button, Modal } from 'react-bootstrap';
 import { SurveyData } from '../types/types';
 import { formatDate } from '../helpers';
 
-interface AddSurveyPopUpProps {
+interface Props {
   show: boolean;
   onCancel: () => void;
   onSaveClick: (data: Partial<SurveyData>) => void;
 }
-const AddSurveyPopUp = ({
-  onCancel,
-  onSaveClick,
-  show,
-}: AddSurveyPopUpProps) => {
+const AddSurveyPopUp = ({ onCancel, onSaveClick, show }: Props) => {
   const companyRef = useRef<HTMLInputElement>(null);
   const topicRef = useRef<HTMLInputElement>(null);
   const paymentRef = useRef<HTMLInputElement>(null);

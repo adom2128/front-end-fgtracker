@@ -1,11 +1,11 @@
 import './CompanyCard.css';
 import { findCompanyLink } from '../helpers';
 
-interface CompanyCardProps {
+interface Props {
   company: string;
 }
 
-const CompanyCard = ({ company }: CompanyCardProps) => {
+const CompanyCard = ({ company }: Props) => {
   return (
     <div className="card-space">
       <a href={findCompanyLink(company)} target="_blank" rel="noreferrer">

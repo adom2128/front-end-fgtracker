@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import { SurveyData } from '../types/types';
 import { formatDate } from '../helpers';
 
-interface EditSurveyPopUpProps {
+interface Props {
   show: boolean;
   onCancel: () => void;
   onSaveClick: (updatedSurvey: SurveyData, surveyID: number) => void;
@@ -18,7 +18,7 @@ const EditSurvey = ({
   onCancel,
   onSaveClick,
   selectedSurveyData,
-}: EditSurveyPopUpProps) => {
+}: Props) => {
   const [showAlert, setShowAlert] = useState(false);
 
   const [selectedStageValue, setSelectedStageValue] = useState(

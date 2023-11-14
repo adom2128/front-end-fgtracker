@@ -2,7 +2,7 @@ import './Dashboard.css';
 import SurveyList from '../components/SurveyList';
 import { SurveyData } from '../types/types';
 
-interface DashboardProps {
+interface Props {
   surveys: SurveyData[];
   onEditSurveyClick: (surveyID: number) => void;
   onDeleteSurveyClick: (surveyID: number) => void;
@@ -14,7 +14,7 @@ const Dashboard = ({
   onEditSurveyClick,
   onDeleteSurveyClick,
   onViewSurveyClick,
-}: DashboardProps) => {
+}: Props) => {
   return (
     <>
       <SurveyList

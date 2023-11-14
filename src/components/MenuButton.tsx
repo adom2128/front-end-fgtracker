@@ -3,7 +3,7 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown } from 'react-bootstrap';
 import './MenuButton.css';
 
-interface MenuButtonProps {
+interface Props {
   surveyID: number;
   onViewSurveyClick: (surveyID: number) => void;
   onEditSurveyClick: (surveyID: number) => void;
@@ -15,7 +15,7 @@ const MenuButton = ({
   onEditSurveyClick,
   onDeleteSurveyClick,
   surveyID,
-}: MenuButtonProps) => {
+}: Props) => {
   return (
     <>
       <Dropdown>

@@ -3,7 +3,7 @@ import './Home.css';
 import { SurveyData } from '../types/types';
 import CompanyCard from '../components/CompanyCard';
 
-interface HomeProps {
+interface Props {
   surveys: SurveyData[];
 }
 
@@ -17,7 +17,7 @@ function isOverSixMonthsAgo(date: Date) {
   return monthDifference > 6;
 }
 
-const Home = ({ surveys }: HomeProps) => {
+const Home = ({ surveys }: Props) => {
   const uniqueCompanies = new Set<string>();
   const filteredSurveys = surveys.filter((survey) => {
     if (

@@ -4,7 +4,7 @@ import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import './PaymentCard.css';
 import { formatExpDate } from '../helpers';
 
-interface PaymentCardProps {
+interface Props {
   paymentLeft: number;
   paymentExpiration: string;
   lastFour: string;
@@ -16,7 +16,7 @@ const PaymentCard = ({
   paymentExpiration,
   lastFour,
   link,
-}: PaymentCardProps) => {
+}: Props) => {
   return (
     <Card className="payment-card card-space">
       <Card.Body className="card-body-customization">

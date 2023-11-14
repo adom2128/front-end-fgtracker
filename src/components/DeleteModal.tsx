@@ -1,11 +1,11 @@
 import { Modal, Button } from 'react-bootstrap';
 
-interface DeleteModalProps {
+interface Props {
   show: boolean;
   onHide: () => void;
   onConfirmDelete: () => void;
 }
-const DeleteModal = ({ show, onHide, onConfirmDelete }: DeleteModalProps) => {
+const DeleteModal = ({ show, onHide, onConfirmDelete }: Props) => {
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header closeButton>
