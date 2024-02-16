@@ -16,9 +16,8 @@ FGTracker is designed to simplify the process of managing survey submissions and
 
 ## Demo
 
-FGTracker is [deployed on GitHub Pages](https://adom2128.github.io/front-end-fgtracker/#/home)
-
-[Recorded Demo](https://youtu.be/jAu6PywxjrU)
+- [Recorded Presentation](https://www.loom.com/share/84d2cf70699144a4b2cfa566417f3291)
+- [Recorded Demo](https://youtu.be/jAu6PywxjrU)
 
 ## Features
 
