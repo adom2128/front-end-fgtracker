@@ -15,8 +15,9 @@ FGTracker is designed to simplify the process of managing survey submissions and
 - [Email Script](https://github.com/adom2128/email-script-fgtracker)
 
 ## Demo
-[Recorded Presentation](https://www.loom.com/share/84d2cf70699144a4b2cfa566417f3291)
-[Recorded Demo](https://youtu.be/jAu6PywxjrU)
+
+- [Recorded Presentation](https://www.loom.com/share/84d2cf70699144a4b2cfa566417f3291)
+- [Recorded Demo](https://youtu.be/jAu6PywxjrU)
 
 ## Features
 
