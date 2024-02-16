@@ -8,20 +8,27 @@ interface Props {
 }
 
 const PaymentsList = ({ surveys }: Props) => {
+  if (!surveys) {
+    return null;
+  }
+
   return (
     <div className="payment-card-container">
       <Row xs={1} sm={2} lg={3} xl={3} className="g-2">
         {surveys
-          ?.filter(
-            (survey) => survey.stage === 'Completed' && survey.paymentLeft! > 0
+          .filter(
+            (survey) =>
+              survey.stage === 'Completed' &&
+              survey.paymentLeft &&
+              survey.paymentLeft > 0
           )
-          ?.map((survey) => (
+          .map((survey) => (
             <Col key={survey.id}>
               <PaymentCard
-                paymentLeft={survey.paymentLeft!}
-                paymentExpiration={survey.paymentExpirationDate!}
-                lastFour={survey.lastFour!}
-                link={survey.link!}
+                paymentLeft={survey.paymentLeft}
+                paymentExpiration={survey.paymentExpirationDate}
+                lastFour={survey.lastFour}
+                link={survey.link}
               />
             </Col>
           ))}

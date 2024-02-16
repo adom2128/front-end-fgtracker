@@ -66,10 +66,19 @@ function App() {
     setShowAddSurveyPopup(false);
 
     const response = await postSurvey(newSurvey);
-    setSurveysData((prev) => [...prev, response!]);
+
+    if (!response) {
+      return;
+    }
+
+    setSurveysData((prev) => [...prev, response]);
   };
 
-  const handleEditSurveyClick = (surveyID: number) => {
+  const handleEditSurveyClick = (surveyID: number | null) => {
+    if (!surveyID) {
+      return;
+    }
+
     setShowEditSurveyPopup(true);
     setSelectedSurveyToEditID(surveyID);
   };
@@ -87,14 +96,18 @@ function App() {
   const handleConfirmDeleteSurvey = async () => {
     setShowEditSurveyPopup(false);
     setShowDeleteModal(false);
-    await deleteSurvey(selectedSurveyToDeleteID!);
+    await deleteSurvey(selectedSurveyToDeleteID);
     fetchSurveys();
   };
 
   const handleEditSurveyPopupSave = async (
-    updatedSurvey: SurveyData,
+    updatedSurvey: SurveyData | undefined,
     surveyID: number
   ) => {
+    if (!updatedSurvey) {
+      return;
+    }
+
     setShowEditSurveyPopup(false);
     await updateSurvey(updatedSurvey, surveyID);
     fetchSurveys();
@@ -115,10 +128,10 @@ function App() {
 
   const handleEditSurvey = () => {
     setShowViewSurveyPopup(false);
-    handleEditSurveyClick(selectedSurveyToViewID!);
+    handleEditSurveyClick(selectedSurveyToViewID);
   };
 
-  const selectedSurveyData = surveysData.find(
+  const selectedSurveyData = surveysData?.find(
     (survey) => survey.id === selectedSurveyToEditID
   );
 
@@ -168,11 +181,9 @@ function App() {
         />
         {selectedSurveyToViewID !== null && (
           <Survey
-            selectedSurveyData={
-              surveysData.find(
-                (survey) => survey.id === selectedSurveyToViewID
-              )!
-            }
+            selectedSurveyData={surveysData?.find(
+              (survey) => survey?.id === selectedSurveyToViewID
+            )}
             show={showViewSurveyPopup}
             onCancel={handleCloseSurvey}
             onEdit={handleEditSurvey}

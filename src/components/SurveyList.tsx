@@ -31,7 +31,7 @@ const SurveyList = ({
             </tr>
           </thead>
           <tbody>
-            {surveys.map((survey) => (
+            {surveys?.map((survey) => (
               <tr key={survey.id}>
                 <td>{survey.company}</td>
                 <td>{survey.topic}</td>

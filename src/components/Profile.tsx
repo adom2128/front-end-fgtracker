@@ -9,8 +9,8 @@ const Profile = () => {
     <>
       {isAuthenticated && (
         <div className="profile-container">
-          <img src={user!.picture} className="user-picture" alt="user"/>
-          <h6 className="user-name">{user!.name}</h6>
+          <img src={user?.picture} className="user-picture" alt="user" />
+          <h6 className="user-name">{user?.name}</h6>
           <LogoutButton />
         </div>
       )}

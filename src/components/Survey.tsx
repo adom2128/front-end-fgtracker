@@ -7,7 +7,7 @@ interface Props {
   show: boolean;
   onCancel: () => void;
   onEdit: () => void;
-  selectedSurveyData: SurveyData;
+  selectedSurveyData: SurveyData | undefined;
 }
 
 const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: Props) => {
@@ -15,54 +15,54 @@ const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: Props) => {
     <Modal show={show} onHide={onCancel} centered>
       <Modal.Header closeButton className="modal-close-button-styling">
         <Modal.Title>
-          {selectedSurveyData.topic} - {selectedSurveyData.company}
+          {selectedSurveyData?.topic} - {selectedSurveyData?.company}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-body-survey">
         <Stack gap={3}>
           <Row>
             <Col className="titles">Company:</Col>{' '}
-            <Col>{selectedSurveyData.company}</Col>
+            <Col>{selectedSurveyData?.company}</Col>
           </Row>
           <Row>
             <Col className="titles">Topic:</Col>{' '}
-            <Col>{selectedSurveyData.topic}</Col>
+            <Col>{selectedSurveyData?.topic}</Col>
           </Row>
           <Row>
             <Col className="titles">Date Survey Submitted:</Col>{' '}
-            <Col>{selectedSurveyData.dateSurveyCompleted}</Col>
+            <Col>{selectedSurveyData?.dateSurveyCompleted}</Col>
           </Row>
           <Row>
             <Col className="titles">Payment:</Col>{' '}
-            <Col>${selectedSurveyData.payment}</Col>
+            <Col>${selectedSurveyData?.payment}</Col>
           </Row>
 
           <Row>
             <Col className="titles">Stage:</Col>
-            <Col> {selectedSurveyData.stage}</Col>
+            <Col> {selectedSurveyData?.stage}</Col>
           </Row>
           <Row>
             <Col className="titles">Date FG Completed:</Col>
-            <Col> {selectedSurveyData.dateFGCompleted}</Col>
+            <Col> {selectedSurveyData?.dateFGCompleted}</Col>
           </Row>
 
           <Row>
             <Col className="titles">Payment Received:</Col>
-            <Col>{formatBoolean(selectedSurveyData.paymentReceived)}</Col>
+            <Col>{formatBoolean(selectedSurveyData?.paymentReceived)}</Col>
           </Row>
           <Row>
             <Col className="titles">Balance: </Col>
-            <Col>${selectedSurveyData.paymentLeft}</Col>
+            <Col>${selectedSurveyData?.paymentLeft}</Col>
           </Row>
           <Row>
             <Col className="titles">Payment Last Four Digits:</Col>
-            <Col>{selectedSurveyData.lastFour}</Col>
+            <Col>{selectedSurveyData?.lastFour}</Col>
           </Row>
           <Row>
             <Col className="titles">Payment Link:</Col>
             <Col>
               <a
-                href={selectedSurveyData.link}
+                href={selectedSurveyData?.link}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -75,7 +75,7 @@ const Survey = ({ show, onCancel, onEdit, selectedSurveyData }: Props) => {
             <Col className="titles">Notes:</Col>
           </Row>
           <Row>
-            <Col className="notes-section">{selectedSurveyData.notes}</Col>
+            <Col className="notes-section">{selectedSurveyData?.notes}</Col>
           </Row>
         </Stack>
       </Modal.Body>

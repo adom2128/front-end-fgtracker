@@ -39,7 +39,11 @@ export const updateSurvey = async (
   }
 };
 
-export const deleteSurvey = async (surveyID: number) => {
+export const deleteSurvey = async (surveyID: number | null) => {
+  if (!surveyID) {
+    return;
+  }
+
   try {
     const response = await axios.delete(`${baseUrl}/surveys/${surveyID}`);
     return response.data;

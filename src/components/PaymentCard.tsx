@@ -5,10 +5,10 @@ import './PaymentCard.css';
 import { formatExpDate } from '../helpers';
 
 interface Props {
-  paymentLeft: number;
-  paymentExpiration: string;
-  lastFour: string;
-  link: string;
+  paymentLeft?: number;
+  paymentExpiration?: string;
+  lastFour?: string;
+  link?: string;
 }
 
 const PaymentCard = ({

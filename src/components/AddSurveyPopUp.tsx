@@ -8,6 +8,7 @@ interface Props {
   onCancel: () => void;
   onSaveClick: (data: Partial<SurveyData>) => void;
 }
+
 const AddSurveyPopUp = ({ onCancel, onSaveClick, show }: Props) => {
   const companyRef = useRef<HTMLInputElement>(null);
   const topicRef = useRef<HTMLInputElement>(null);
@@ -18,12 +19,13 @@ const AddSurveyPopUp = ({ onCancel, onSaveClick, show }: Props) => {
     e.preventDefault();
 
     const newSurvey = {
-      company: companyRef.current!.value,
-      topic: topicRef.current!.value,
-      payment: Number(paymentRef.current!.value),
-      notes: notesRef.current!.value,
+      company: companyRef.current?.value,
+      topic: topicRef.current?.value,
+      payment: Number(paymentRef.current?.value),
+      notes: notesRef.current?.value,
       date_survey_completed: formatDate(new Date()),
     };
+
     onSaveClick(newSurvey);
   };
 

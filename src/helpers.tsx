@@ -70,7 +70,11 @@ export const formatBoolean = (boolean: Boolean | null | undefined) => {
   }
 };
 
-export const findCompanyLink = (company: string) => {
+export const findCompanyLink = (company?: string) => {
+  if (!company) {
+    return;
+  }
+
   const companyFocusGroupApplicationLinks = {
     'Fieldwork NRC': 'https://www.facebook.com/fieldwork.NRC',
     'Fieldwork Denver': 'https://www.facebook.com/FieldworkDenver',
@@ -95,7 +99,7 @@ export const findCompanyLink = (company: string) => {
   return companyLinks[company];
 };
 
-export const formatExpDate = (date: string | null) => {
+export const formatExpDate = (date: string | null | undefined) => {
   if (!date) {
     return null;
   }
@@ -112,6 +116,10 @@ export const formatExpDate = (date: string | null) => {
 };
 
 export const calculateTotalBalance = (surveys: SurveyData[]) => {
+  if (!surveys) {
+    return;
+  }
+
   let totalBalance = 0;
   for (const survey of surveys) {
     if (survey.paymentLeft) {

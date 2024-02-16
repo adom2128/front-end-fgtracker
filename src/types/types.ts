@@ -1,6 +1,6 @@
 export interface SurveyData {
   id: number;
-  company: string;
+  company?: string;
   dateFGCompleted?: string;
   dateSurveyCompleted?: string;
   notes?: string;
@@ -9,7 +9,7 @@ export interface SurveyData {
   paymentLeft?: number;
   paymentReceived?: boolean;
   stage?: string;
-  topic: string;
+  topic?: string;
   lastFour?: string;
   link?: string;
 }

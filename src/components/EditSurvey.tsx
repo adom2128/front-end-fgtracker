@@ -7,7 +7,10 @@ import { formatDate } from '../helpers';
 interface Props {
   show: boolean;
   onCancel: () => void;
-  onSaveClick: (updatedSurvey: SurveyData, surveyID: number) => void;
+  onSaveClick: (
+    updatedSurvey: SurveyData | undefined,
+    surveyID: number
+  ) => void;
   selectedSurveyData: SurveyData;
 }
 
@@ -90,20 +93,20 @@ const EditSurvey = ({
 
     const updatedSurvey = {
       id: selectedSurveyData.id,
-      company: companyRef.current!.value,
-      topic: topicRef.current!.value,
-      payment: Number(paymentRef.current!.value),
-      notes: notesRef.current!.value,
+      company: companyRef.current?.value,
+      topic: topicRef.current?.value,
+      payment: Number(paymentRef.current?.value),
+      notes: notesRef.current?.value,
       date_survey_completed: formatDate(dateSurveyCompleted),
       date_fg_completed: formatDate(dateFGCompleted),
       payment_received: paymentReceivedValue,
-      payment_left: Number(paymentLeftRef.current!.value),
+      payment_left: Number(paymentLeftRef.current?.value),
       payment_expiration_date: formatDate(paymentExpirationDate),
       stage: selectedStageValue,
-      last_four: paymentLastFourDigitsRef.current!.value,
-      link: paymentLinkRef.current!.value,
+      last_four: paymentLastFourDigitsRef.current?.value,
+      link: paymentLinkRef.current?.value,
     };
-    onSaveClick(updatedSurvey, selectedSurveyData.id!);
+    onSaveClick(updatedSurvey, selectedSurveyData.id);
   };
 
   const handleStageChange = (e: FormEvent<HTMLSelectElement>) => {

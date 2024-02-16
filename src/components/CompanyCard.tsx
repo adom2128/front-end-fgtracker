@@ -2,7 +2,7 @@ import './CompanyCard.css';
 import { findCompanyLink } from '../helpers';
 
 interface Props {
-  company: string;
+  company?: string;
 }
 
 const CompanyCard = ({ company }: Props) => {
